@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import toast from 'react-hot-toast';
 import img from '../../images/shijan.jpg';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
-
+import './Header.css'
 
 
 
@@ -57,13 +57,13 @@ const Header = () => {
 
     return (
         <div>
-            <nav className="w-full bg-purple-400 shadow sticky top-0 z-50">
+            <nav className="w-full bg-[#004767] shadow sticky top-0 z-50">
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>
                         <div className="flex items-center justify-between py-3  md:block">
-                            <Link to='/'>
+                            <NavLink to='/'>
                                 <img className='h-20' src={logo} alt="" />
-                            </Link>
+                            </NavLink>
                             <div className="md:hidden">
                                 <button
                                     className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
@@ -109,19 +109,19 @@ const Header = () => {
                         >
                             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                                 <li className="text-white hover:text-indigo-200">
-                                    <Link to='/'>Home</Link>
+                                    <NavLink to='/'>Home</NavLink>
                                 </li>
                                 <li className="text-white hover:text-indigo-200">
-                                    <Link to='/courses'>Courses</Link>
+                                    <NavLink to='/courses'>Courses</NavLink>
                                 </li>
                                 <li className="text-white hover:text-indigo-200">
-                                    <Link to='/blog'>Blog</Link>
+                                    <NavLink to='/blog'>Blog</NavLink>
                                 </li>
                                 <li className="text-white hover:text-indigo-200">
-                                    <Link to='/faq'>FAQ</Link>
+                                    <NavLink to='/faq'>FAQ</NavLink>
                                 </li>
                                 <li className="text-white hover:text-indigo-200">
-                                    <Link to='/contact'>Contact</Link>
+                                    <NavLink to='/contact'>Contact</NavLink>
                                 </li>
 
 
@@ -146,10 +146,10 @@ const Header = () => {
 
                                         {
                                             user?.photoURL ? <>
-                                                <img onClick={() => setHidden(!hidden)} className='w-12 h-12 rounded-full mr-2' alt='profilePhoto' src={img} ></img>
+                                                <img onClick={() => setHidden(!hidden)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={img} ></img>
                                                 {userDash}
                                             </> :
-                                                <UserCircleIcon title={user?.displayName} className='w-12 h-12 text-white mr-2'></UserCircleIcon>
+                                                <UserCircleIcon title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
                                         }
                                     </div>
 
@@ -159,18 +159,18 @@ const Header = () => {
                                 {
                                     user?.uid ? <></> :
                                         <>
-                                            <Link
+                                            <NavLink
                                                 to='/login'
                                                 className="inline-block w-full px-4 py-2 text-center text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
                                             >
                                                 Login
-                                            </Link>
-                                            <Link
+                                            </NavLink>
+                                            <NavLink
                                                 to='/register'
                                                 className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
                                             >
                                                 Register
-                                            </Link>
+                                            </NavLink>
                                         </>
                                 }
 
@@ -183,7 +183,7 @@ const Header = () => {
                         {
                             user?.uid && <div>
                                 {
-                                    user?.photoURL ? <img data-dropdown-toggle="dropdown" onClick={() => setHidden(!hidden)} className='w-12 h-12 rounded-full mr-2' alt='profilePhoto' src={img} ></img> : <UserCircleIcon title={user?.displayName} className='w-12 h-12 text-white mr-2'></UserCircleIcon>
+                                    user?.photoURL ? <img onClick={() => setHidden(!hidden)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={img} ></img> : <UserCircleIcon title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
                                 }
 
 
@@ -196,18 +196,18 @@ const Header = () => {
                         {
                             user?.uid ? <p></p> :
                                 <>
-                                    <Link
+                                    <NavLink
                                         to='/login'
                                         className="px-4 mr-2 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
                                     >
                                         Login
-                                    </Link>
-                                    <Link
+                                    </NavLink>
+                                    <NavLink
                                         to='/register'
                                         className="px-4 mr-2 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
                                     >
                                         Register
-                                    </Link>
+                                    </NavLink>
                                 </>
 
                         }
