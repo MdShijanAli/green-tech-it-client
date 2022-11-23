@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCrRiNOWQBJqOP-Qbi8WaFLTCZC9RDUFC8",
-    authDomain: "cv-bulider-application.firebaseapp.com",
-    projectId: "cv-bulider-application",
-    storageBucket: "cv-bulider-application.appspot.com",
-    messagingSenderId: "800673253164",
-    appId: "1:800673253164:web:ec0f28b4ac17c6f8308e89"
+    apiKey: "AIzaSyAeiyFQ8p4A9XH72ltewkLwX1vVogoKoiU",
+    authDomain: "green-tech-it.firebaseapp.com",
+    projectId: "green-tech-it",
+    storageBucket: "green-tech-it.appspot.com",
+    messagingSenderId: "315607154656",
+    appId: "1:315607154656:web:cb5043f6f4d4468c2b7585"
 };
 
 // Initialize Firebase

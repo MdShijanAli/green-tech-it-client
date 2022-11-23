@@ -29,27 +29,27 @@ const Header = () => {
 
     const userDash = <React.Fragment>
         {
-            hidden && <div className='grid justify-end'>
-                <div className="z-50 grid w-full mr-20 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-                    <div className="px-4 py-3">
-                        <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                        <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+            hidden && <div className='grid md:justify-end'>
+                {
+                    user?.uid && <div className="z-50 mt-6 md:mt-0 grid w-full mr-24 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+                        <div className="px-4 py-3">
+                            <span className="block text-md font-semibold text-gray-900 dark:text-white">{user?.displayName}</span>
+                            <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{user?.email}</span>
+                        </div>
+                        <ul className="py-1" aria-labelledby="user-menu-button">
+                            <li>
+                                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                            </li>
+
+                            <li>
+                                <a onClick={handleLogout} href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul className="py-1" aria-labelledby="user-menu-button">
-                        <li>
-                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
-                        </li>
-                        <li>
-                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
-                        </li>
-                    </ul>
-                </div>
+                }
             </div>
         }
     </React.Fragment>
@@ -60,9 +60,9 @@ const Header = () => {
             <nav className="w-full bg-purple-400 shadow sticky top-0 z-50">
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>
-                        <div className="flex items-center justify-between py-3 md:py-5 md:block">
+                        <div className="flex items-center justify-between py-3  md:block">
                             <Link to='/'>
-                                <img className='h-10' src={logo} alt="" />
+                                <img className='h-20' src={logo} alt="" />
                             </Link>
                             <div className="md:hidden">
                                 <button
@@ -85,7 +85,7 @@ const Header = () => {
                                     ) : (
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="w-6 h-6 text-white"
+                                            className="w-10 h-10 text-white"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
@@ -157,12 +157,7 @@ const Header = () => {
 
 
                                 {
-                                    user?.uid ? <Link onClick={handleLogout}
-
-                                        className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-                                    >
-                                        Sign Out
-                                    </Link> :
+                                    user?.uid ? <></> :
                                         <>
                                             <Link
                                                 to='/login'
@@ -199,12 +194,7 @@ const Header = () => {
 
 
                         {
-                            user?.uid ? <Link onClick={handleLogout}
-
-                                className="px-4 text-center py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-                            >
-                                Logout
-                            </Link> :
+                            user?.uid ? <p></p> :
                                 <>
                                     <Link
                                         to='/login'
@@ -239,7 +229,7 @@ const Header = () => {
                 </div>
 
             </nav >
-            <div>
+            <div className='hidden md:block'>
                 {userDash}
             </div>
         </div>
