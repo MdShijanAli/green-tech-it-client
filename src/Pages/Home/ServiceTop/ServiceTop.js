@@ -38,7 +38,7 @@ const ServiceTop = () => {
                 {
                     services.map(service => <div key={service.id} className='shadow-xl shadow-slate-500 mb-20 bg-white p-10'>
                         <div className=''>
-                            <img className='w-32 h-32' src={service.img} alt="" />
+                            <img className='w-32 h-32 mx-auto' src={service.img} alt="" />
                             <h1 className='text-blue-900 font-semibold text-xl my-5'>{service.title}</h1>
                             <p>{service.description}</p>
                         </div>

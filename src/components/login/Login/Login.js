@@ -1,7 +1,7 @@
-import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 
@@ -55,20 +55,6 @@ const Login = () => {
 
             })
     }
-    const githubProvider = new GithubAuthProvider();
-    const handleGithubSignIn = () => {
-        providerLogin(githubProvider)
-            .then(result => {
-                const user = result.user;
-                navigate(from, { replace: true });
-                console.log('New User From Github', user)
-            })
-            .catch(error => {
-                console.error('Github User SIgn In error', error);
-
-            })
-    }
-
 
 
 
@@ -141,16 +127,7 @@ const Login = () => {
                                 Sign in with Google
                             </button>
 
-                            <button
-                                onClick={handleGithubSignIn}
-                                type="button"
-                                className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
-                            >
-                                <div className="absolute inset-y-0 left-0 p-4">
-                                    <FaGithub className='w-6 h-6'></FaGithub>
-                                </div>
-                                Sign in with GitHub
-                            </button>
+
                         </div>
                     </div>
                 </div>
