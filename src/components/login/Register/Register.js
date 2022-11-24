@@ -1,28 +1,31 @@
-import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { setAuthToken } from '../../../api/authApi';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import logo from '../../../images/logo.png'
 import img from '../../../images/shijan.jpg'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
 
 
 const Register = () => {
     const [wrongPass, setWrongPass] = useState('');
-
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const [error, setError] = useState('');
     const [showpass, setShowPass] = useState(false);
     const navigate = useNavigate();
-    const { createUser, providerLogin, updateUserProfile } = useContext(AuthContext);
+    const { createUser, loading, setLoading, signInGoogle, updateUserProfile } = useContext(AuthContext);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
         const confirm = form.confirm.value;
         const password = form.password.value;
-        const photoURL = form.photoURL.value;
+        const image = form.image.files[0];
 
         if (!/(?=.*[!@#$%^&*])/.test(password)) {
             setError('Please add a special carecter')
@@ -38,55 +41,61 @@ const Register = () => {
         }
 
 
-        createUser(email, password)
-            .then(result => {
-                const user = result.user;
-                setError('');
-                handleUpdateProfile(name, photoURL);
-                form.reset();
-                navigate('/')
-                console.log('New Created User', user);
-            })
-            .catch(error => {
-                console.error('create user account error', error)
-                setError(error.message);
+
+        const formData = new FormData()
+        formData.append('image', image)
+
+        const url = 'https://api.imgbb.com/1/upload?key=c993754e5e7bdf8ca9412defbbd79642'
+        fetch(url, {
+            method: 'POST',
+            body: formData,
+        })
+            .then(res => res.json())
+            .then(imageData => {
+                createUser(email, password)
+                    .then(result => {
+                        setAuthToken(result.user)
+                        setError('');
+                        updateUserProfile(name, imageData.data.url)
+                            .then(() => {
+                                form.reset();
+                                navigate(from, { replace: true })
+
+                            })
+                            .catch(error => setError(error.message))
+                    })
+                    .catch(error => {
+                        console.error('create user account error', error)
+                        setError(error.message);
+                        setLoading(false)
+                    })
 
             })
+            .catch(err => {
+                toast.error(err.message)
+            })
 
 
-        console.log(name, email, photoURL, password, confirm)
+        console.log(name, email, image, password, confirm)
+
+
+
 
     }
 
-    const handleUpdateProfile = (name, photoURL) => {
-        const profile = {
-            displayName: name,
-            photoURL: photoURL
-        }
-
-        updateUserProfile(profile)
-            .then(() => {
-
-                console.log('Update USer Phofile')
-            })
-            .catch(error => {
-                console.error('create user account error', error)
-            })
-
-    }
 
 
-
-    const googleProvider = new GoogleAuthProvider();
     const handleGoogleSignIn = () => {
-        providerLogin(googleProvider)
+        signInGoogle()
             .then(result => {
                 const user = result.user;
+                setAuthToken(result.user)
                 console.log('New User From Google', user);
-                navigate('/');
+                navigate(from, { replace: true })
             })
             .catch(error => {
-                console.error('Google User SIgn In error', error)
+                console.error('Google User SIgn In error', error);
+                toast.error(error.message)
             })
     }
 
@@ -144,9 +153,15 @@ const Register = () => {
                         <div className="mt-6 w-full">
                             <label htmlFor="photoURL" className="text-sm font-medium leading-none text-gray-800">
                                 {" "}
-                                Photo URL{" "}
+                                Select Image{" "}
                             </label>
-                            <input name='photoURL' id="photoURL" aria-labelledby="photoURL" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder=" jpg,jpeg,png etc" required />
+                            <input
+                                type='file'
+                                id='image'
+                                name='image'
+                                accept='image/*'
+                                required
+                            />
                         </div>
                         <div className="mt-6 w-full">
                             <label htmlFor="email" className="text-sm font-medium leading-none text-gray-800">
@@ -220,7 +235,9 @@ const Register = () => {
 
                         <div className="mt-8">
                             <button className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
-                                Create my account
+                                {
+                                    loading ? <LoadingSpinner></LoadingSpinner> : 'Create my account'
+                                }
                             </button>
                         </div>
                     </div>
@@ -256,7 +273,7 @@ const Register = () => {
                 </form>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default Register;

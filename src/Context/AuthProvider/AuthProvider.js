@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, GoogleAuthProvider } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 
 export const AuthContext = createContext();
@@ -7,8 +7,10 @@ export const AuthContext = createContext();
 const auth = getAuth(app)
 
 const AuthProvider = ({ children }) => {
+    const googleProvider = new GoogleAuthProvider();
 
     const [user, setUser] = useState(null);
+    console.log(user)
     const [loading, setLoading] = useState(true);
 
     console.log('authprovider', user)
@@ -18,9 +20,9 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const providerLogin = (provider) => {
+    const signInGoogle = () => {
         setLoading(true);
-        return signInWithPopup(auth, provider)
+        return signInWithPopup(auth, googleProvider)
     }
 
     const signIn = (email, password) => {
@@ -28,14 +30,17 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const updateUserProfile = (profile) => {
-        setLoading(true);
-        return updateProfile(auth.currentUser, profile);
-
+    const updateUserProfile = (name, photo) => {
+        setLoading(true)
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo,
+        })
     }
 
     const logOut = () => {
         setLoading(true);
+        localStorage.removeItem('greenTechToken')
         return signOut(auth);
 
     }
@@ -67,12 +72,13 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         createUser,
-        providerLogin,
+        signInGoogle,
         user,
         signIn,
         logOut,
         updateUserProfile,
         loading,
+        setLoading,
         passResetEmail
 
 

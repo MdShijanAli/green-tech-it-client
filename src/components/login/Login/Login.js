@@ -1,10 +1,10 @@
-import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
-
-
+import toast from 'react-hot-toast';
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import { setAuthToken } from '../../../api/authApi';
 
 
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [error, setError] = useState('');
-    const { providerLogin, signIn } = useContext(AuthContext)
+    const { signInGoogle, loading, setLoading, signIn } = useContext(AuthContext)
 
     const from = location.state?.from?.pathname || '/';
 
@@ -31,31 +31,30 @@ const Login = () => {
                 const user = result.user;
                 form.reset();
                 setError('');
+                setAuthToken(result.user)
                 navigate(from, { replace: true });
-
                 console.log('Login User from form', user)
             })
             .catch(error => {
                 console.error('SIgn In from From User', error)
                 setError(error.message);
+                setLoading(false);
             })
 
     }
-    const googleProvider = new GoogleAuthProvider();
     const handleGoogleSignIn = () => {
-        providerLogin(googleProvider)
+        signInGoogle()
             .then(result => {
                 const user = result.user;
-
-                navigate(from, { replace: true });
-                console.log('New User From Google', user)
+                setAuthToken(result.user)
+                console.log('New User From Google', user);
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error('Google User SIgn In error', error);
-
+                toast.error(error.message)
             })
     }
-
 
 
 
@@ -110,7 +109,11 @@ const Login = () => {
                                 </div>
 
                                 <div>
-                                    <button type="submit" className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700">Log in</button>
+                                    <button type="submit" className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700">
+                                        {
+                                            loading ? <LoadingSpinner></LoadingSpinner> : 'Log In'
+                                        }
+                                    </button>
                                 </div>
                             </div>
                         </form>

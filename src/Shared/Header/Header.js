@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import toast from 'react-hot-toast';
-import img from '../../images/shijan.jpg';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import './Header.css'
 
@@ -38,14 +37,14 @@ const Header = () => {
                         </div>
                         <ul className="py-1" aria-labelledby="user-menu-button">
                             <li>
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                                <Link to='/dashboard' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</Link>
                             </li>
                             <li>
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                                <Link to='/dashboard' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</Link>
                             </li>
 
                             <li>
-                                <a onClick={handleLogout} href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                                <Link onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
                             </li>
                         </ul>
                     </div>
@@ -54,6 +53,26 @@ const Header = () => {
         }
     </React.Fragment>
 
+
+    const menuItems = <React.Fragment>
+        <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+            <li className="text-white hover:text-indigo-200">
+                <NavLink to='/'>Home</NavLink>
+            </li>
+            <li className="text-white hover:text-indigo-200">
+                <NavLink to='/products'>Products</NavLink>
+            </li>
+            <li className="text-white hover:text-indigo-200">
+                <NavLink to='/blog'>Blog</NavLink>
+            </li>
+
+            <li className="text-white hover:text-indigo-200">
+                <NavLink to='/contact'>Contact</NavLink>
+            </li>
+
+
+        </ul>
+    </React.Fragment>
 
     return (
         <div>
@@ -107,35 +126,10 @@ const Header = () => {
                             className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
                                 }`}
                         >
-                            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                                <li className="text-white hover:text-indigo-200">
-                                    <NavLink to='/'>Home</NavLink>
-                                </li>
-                                <li className="text-white hover:text-indigo-200">
-                                    <NavLink to='/courses'>Courses</NavLink>
-                                </li>
-                                <li className="text-white hover:text-indigo-200">
-                                    <NavLink to='/blog'>Blog</NavLink>
-                                </li>
-                                <li className="text-white hover:text-indigo-200">
-                                    <NavLink to='/faq'>FAQ</NavLink>
-                                </li>
-                                <li className="text-white hover:text-indigo-200">
-                                    <NavLink to='/contact'>Contact</NavLink>
-                                </li>
 
 
 
-
-
-
-
-
-
-                            </ul>
-
-
-
+                            {menuItems}
 
 
 
@@ -146,10 +140,10 @@ const Header = () => {
 
                                         {
                                             user?.photoURL ? <>
-                                                <img onClick={() => setHidden(!hidden)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={img} ></img>
+                                                <img onClick={() => setHidden(!hidden)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={user?.photoURL} ></img>
                                                 {userDash}
                                             </> :
-                                                <UserCircleIcon title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
+                                                <UserCircleIcon onClick={() => setHidden(!hidden)} title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
                                         }
                                     </div>
 
@@ -183,7 +177,7 @@ const Header = () => {
                         {
                             user?.uid && <div>
                                 {
-                                    user?.photoURL ? <img onClick={() => setHidden(!hidden)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={img} ></img> : <UserCircleIcon title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
+                                    user?.photoURL ? <img onClick={() => setHidden(!hidden)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={user?.photoURL} ></img> : <UserCircleIcon onClick={() => setHidden(!hidden)} title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
                                 }
 
 
