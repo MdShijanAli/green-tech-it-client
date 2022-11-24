@@ -12,7 +12,7 @@ const DashboardLayout = () => {
             .then(() => {
                 console.log('successfuly logout');
                 toast.success('You have logged Out Successfully!!');
-                navigate('/')
+                navigate('/');
             })
             .catch(error => {
                 console.error('error', error.message)

@@ -10,9 +10,10 @@ import './Header.css'
 
 const Header = () => {
 
-    const [hidden, setHidden] = useState(false);
+
     const [navbar, setNavbar] = useState(false);
     const { user, logOut } = useContext(AuthContext);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     console.log('header user', user)
     const handleLogout = () => {
         logOut()
@@ -28,23 +29,22 @@ const Header = () => {
 
     const userDash = <React.Fragment>
         {
-            hidden && <div className='grid md:justify-end'>
+            isDropdownOpen && <div>
                 {
-                    user?.uid && <div className="z-50 mt-6 md:mt-0 grid w-full mr-24 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-                        <div className="px-4 py-3">
-                            <span className="block text-md font-semibold text-gray-900 dark:text-white">{user?.displayName}</span>
-                            <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{user?.email}</span>
-                        </div>
+                    user?.uid && <div className="md:absolute md:right-16 z-20 mt-5 md:mt-0 w-full md:w-48 py-2 bg-white rounded-md shadow-xl ">
+
                         <ul className="py-1" aria-labelledby="user-menu-button">
                             <li>
                                 <Link to='/dashboard' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</Link>
                             </li>
-                            <li>
-                                <Link to='/dashboard' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</Link>
-                            </li>
+
 
                             <li>
-                                <Link onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
+                                <Link onClick={() => {
+                                    setIsDropdownOpen(false)
+                                    handleLogout()
+                                }}
+                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
                             </li>
                         </ul>
                     </div>
@@ -140,10 +140,10 @@ const Header = () => {
 
                                         {
                                             user?.photoURL ? <>
-                                                <img onClick={() => setHidden(!hidden)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={user?.photoURL} ></img>
+                                                <img onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={user?.photoURL} ></img>
                                                 {userDash}
                                             </> :
-                                                <UserCircleIcon onClick={() => setHidden(!hidden)} title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
+                                                <UserCircleIcon onClick={() => setIsDropdownOpen(!isDropdownOpen)} title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
                                         }
                                     </div>
 
@@ -177,7 +177,7 @@ const Header = () => {
                         {
                             user?.uid && <div>
                                 {
-                                    user?.photoURL ? <img onClick={() => setHidden(!hidden)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={user?.photoURL} ></img> : <UserCircleIcon onClick={() => setHidden(!hidden)} title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
+                                    user?.photoURL ? <img onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={user?.photoURL} ></img> : <UserCircleIcon onClick={() => setIsDropdownOpen(!isDropdownOpen)} title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
                                 }
 
 

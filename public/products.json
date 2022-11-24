@@ -1,34 +1,62 @@
 [
     {
-        "title": "Hiking In the Mountains",
-        "location": "Bandarban",
-        "image": "https://i.ibb.co/hfzf6CJ/Experience2.jpg",
-        "price": 57,
-        "host": "John Doe",
-        "rating": "64"
+        "name": "Apple MacBook Air 13.3-Inch Retina Display 8-core Apple M1 chip with 8GB RAM, 256GB SSD (MGN63) Space Gray",
+        "photo": "https://www.startech.com.bd/image/cache/catalog/laptop/apple/macbook-pro/MYD92/macbook-myd92-228x228.jpg",
+        "location": "Newtown 7 no, dinajpur",
+        "resalePrice": "1,20,00",
+        "originalPrice": "1,42,900",
+        "used": "1 years",
+        "salerName": "Md Shijan Ali",
+        "category": "Macbook"
     },
     {
-        "title": "Sky Diving like never before",
-        "location": "Dubai",
-        "image": "https://i.ibb.co/2jb4bvR/Experience3.jpg",
-        "price": 157,
-        "host": "Max Mars",
-        "rating": "43"
+        "name": "Apple MacBook Air (2022) Apple M2 Chip 13.6-Inch Liquid Retina Display 8GB RAM 256GB SSD Starlight #MLY13LL/A / MLY13ZP/A",
+        "photo": "https://www.startech.com.bd/image/cache/catalog/laptop/apple/macbook-air-m2-chip/macbook-air-m2-chip-starlight-01-228x228.webp",
+        "location": "Newtown 7 no, dinajpur",
+        "resalePrice": "1,00,500",
+        "originalPrice": "1,65,500",
+        "used": "2 years",
+        "salerName": "Md Shijan Ali",
+        "category": "Macbook"
     },
     {
-        "title": "See Sunset in the beach",
-        "location": "Kuakata",
-        "image": "https://i.ibb.co/hfzf6CJ/Experience2.jpg",
-        "price": 47,
-        "host": "John Doe",
-        "rating": "34"
+        "name": "Apple MacBook Pro 16-Inch M1 Pro Chip 16GB RAM 512GB SSD MK183ZP/A Space Gray 2021",
+        "photo": "https://www.startech.com.bd/image/cache/catalog/laptop/apple/macbook-pro-16-inch/macbook-pro-16-inch-01-228x228.jpg",
+        "location": "Newtown 7 no, dinajpur",
+        "resalePrice": "2,20,000",
+        "originalPrice": "265,500",
+        "used": "8 months",
+        "salerName": "Md Shijan Ali",
+        "category": "Macbook"
     },
     {
-        "title": "See Sunset in the beach",
-        "location": "Rangamati",
-        "image": "https://i.ibb.co/bB98pjR/Experience1.jpg",
-        "price": 98,
-        "host": "John Doe",
-        "rating": "97"
+        "name": "Apple MacBook Pro 16-Inch M1 Max Chip 64GB RAM 4TB SSD Space Gray (MK233LL/A)",
+        "photo": "https://www.startech.com.bd/image/cache/catalog/laptop/apple/macbook-pro-16-inch/macbook-pro-16-inch-01-228x228.jpg",
+        "location": "Newtown 7 no, dinajpur",
+        "resalePrice": "4,00,000",
+        "originalPrice": "5,20,000",
+        "used": "1.5 years",
+        "salerName": "Md Shijan Ali",
+        "category": "Macbook"
+    },
+    {
+        "name": "Apple MacBook Air (2022) Apple M2 Chip 13.6-Inch Liquid Retina Display 8GB RAM 256GB SSD Space Gray #MLXW3LL/A / MLXW3ZP/A",
+        "photo": "https://www.startech.com.bd/image/cache/catalog/laptop/apple/macbook-air-m2-chip/macbook-air-m2-chip-space-gray-01-228x228.webp",
+        "location": "Newtown 7 no, dinajpur",
+        "resalePrice": "1,20,000",
+        "originalPrice": "1,56,750",
+        "used": "1 years",
+        "salerName": "Md Shijan Ali",
+        "category": "Macbook"
+    },
+    {
+        "name": "Apple MacBook Pro 13.3-Inch Retina Display M2 Chip 8GB RAM 512GB SSD Space Gray (MNEJ3)",
+        "photo": "https://www.startech.com.bd/image/cache/catalog/laptop/apple/macbook-pro/m2-chip/macbook-pro-13-inch-m2-space-gray-228x228.jpg",
+        "location": "Newtown 7 no, dinajpur",
+        "resalePrice": "1,50,000",
+        "originalPrice": "1,92,500",
+        "used": "1 years",
+        "salerName": "Md Shijan Ali",
+        "category": "Macbook"
     }
 ]

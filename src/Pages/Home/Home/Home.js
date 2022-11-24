@@ -1,5 +1,6 @@
 import React from 'react';
 import BannerSection from '../BannerSection/BannerSection';
+import CategorySection from '../CategorySection/CategorySection';
 import ServiceTop from '../ServiceTop/ServiceTop';
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <BannerSection></BannerSection>
             <ServiceTop></ServiceTop>
+            <CategorySection></CategorySection>
 
         </div>
     );

@@ -17,6 +17,8 @@ const Register = () => {
     const [showpass, setShowPass] = useState(false);
     const navigate = useNavigate();
     const { createUser, loading, setLoading, signInGoogle, updateUserProfile } = useContext(AuthContext);
+    const [checked, setChecked] = useState(false);
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -26,6 +28,15 @@ const Register = () => {
         const confirm = form.confirm.value;
         const password = form.password.value;
         const image = form.image.files[0];
+        const check = form.check.checked;
+
+
+        setChecked(current => !current);
+
+
+
+
+        // console.log(userInfo)
 
         if (!/(?=.*[!@#$%^&*])/.test(password)) {
             setError('Please add a special carecter')
@@ -52,6 +63,40 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(imageData => {
+
+                if (imageData.success) {
+
+                    const userInfo = {
+                        displayName: name,
+                        photoURL: imageData.data.url,
+                        email,
+                        check
+                    }
+                    console.log(userInfo)
+                    // save doctor information to the database
+
+                    fetch('http://localhost:5000/users', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(userInfo)
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result.acknowledged) {
+                                toast.success(`${name} is Added Successfully`);
+                                navigate('/')
+                            }
+                            console.log(result)
+                        })
+                }
+
+
+
+
+
                 createUser(email, password)
                     .then(result => {
                         setAuthToken(result.user)
@@ -60,6 +105,8 @@ const Register = () => {
                             .then(() => {
                                 form.reset();
                                 navigate(from, { replace: true })
+
+
 
                             })
                             .catch(error => setError(error.message))
@@ -76,7 +123,7 @@ const Register = () => {
             })
 
 
-        console.log(name, email, image, password, confirm)
+        // console.log(name, check, email, image, password, confirm)
 
 
 
@@ -231,6 +278,13 @@ const Register = () => {
                         </div>
                         <div className='text-red-600'>
                             {wrongPass}
+                        </div>
+
+                        <div className="form-control my-5">
+                            <label className="label cursor-pointer justify-start">
+                                <input name='check' type="checkbox" value={checked} className="checkbox" />
+                                <span className="ml-5">Do you want to ReSale your Products?</span>
+                            </label>
                         </div>
 
                         <div className="mt-8">
