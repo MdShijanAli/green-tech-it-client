@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CategorySection = () => {
 
@@ -21,7 +22,9 @@ const CategorySection = () => {
                         <div className="card-body">
                             <h2 className="card-title text-4xl  justify-center mt-28">{category.name}</h2>
                             <div className="card-actions justify-center mt-4">
-                                <button className="btn btn-primary">See All</button>
+                                <Link to={`/products/${category.name}`}>
+                                    <button className="btn btn-primary">See All</button>
+                                </Link>
                             </div>
                         </div>
                     </div>)

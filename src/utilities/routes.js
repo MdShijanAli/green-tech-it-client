@@ -14,6 +14,9 @@ import Blog from "../Pages/Blog/Blog";
 import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
+import AllProducts from "../Pages/Products/AllProducts/AllProducts";
+import CategoryProductsPage from "../Pages/Products/CategoryProductspage/CategoryProductsPage";
+import ProductDetails from "../Pages/Products/ProductDetails/ProductDetails";
 import Products from "../Pages/Products/Products";
 
 
@@ -34,10 +37,7 @@ export const routes = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>
             },
-            {
-                path: '/products',
-                element: <Products></Products>
-            },
+
             {
                 path: '/blog',
                 element: <Blog></Blog>
@@ -49,6 +49,29 @@ export const routes = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact></Contact>
+            }
+
+        ]
+    },
+    {
+        path: '/products',
+        element: <Products></Products>,
+        children: [
+            {
+                path: '/products',
+                element: <AllProducts></AllProducts>,
+                loader: () => fetch('http://localhost:5000/products')
+            },
+            {
+                path: '/products/:name',
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.name}`),
+                element: <CategoryProductsPage></CategoryProductsPage>
+            },
+
+            {
+                path: '/products/sp/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
+                element: <ProductDetails></ProductDetails>
             }
         ]
     },
