@@ -74,8 +74,8 @@ const BookingModal = ({ productDetails }) => {
 
                         <input name='buyerName' type="text" defaultValue={user?.displayName} disabled className="input input-bordered input-secondary w-full my-1" required />
                         <input name='email' type="email" defaultValue={user?.email} disabled className="input input-bordered input-secondary w-full my-1" required />
-                        <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered input-secondary w-full my-1" required />
-                        <input name='location' type="text" placeholder="Meeting Location" className="input input-bordered input-secondary w-full my-1" required />
+                        <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered input-primary w-full my-1" required />
+                        <input name='location' type="text" placeholder="Meeting Location" className="input input-bordered input-primary w-full my-1" required />
                         <h2 className='text-xl my-2'>Price: {resalePrice} BDT</h2>
                         <br />
                         <input className='w-full btn btn-active mt-3' type="submit" value="Submit" />

@@ -1,10 +1,27 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from './BookingModal/BookingModal';
-
+// import { useQuery } from '@tanstack/react-query';
 const ProductDetails = () => {
     const productDetails = useLoaderData();
+
+
+    /* 
+        const { data: productDetails = [], refetch } = useQuery({
+            queryKey: ['productDetails'],
+            queryFn: async ({ params }) => {
+                const res = await fetch(`http://localhost:5000/product/${params.id}`)
+                const data = await res.json();
+                return data;
+    
+            }
+    
+    
+        }) */
     const { name, photo, location, resalePrice, originalPrice, used, salerName } = productDetails;
+
+
+
     return (
         <div className="card w-3/4 mx-auto my-20 bg-base-100 shadow-xl">
             <figure><img className='w-1/2' src={photo} alt="Product" /></figure>
