@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../Context/AuthProvider/AuthProvider';
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 
 
 const BookingModal = ({ productDetails }) => {
     const { name, resalePrice, salerName } = productDetails;
 
     const { user } = useContext(AuthContext);
-    const { refetch } = useQuery();
+
 
 
 
