@@ -11,6 +11,7 @@ import MyProducts from "../Dashboard/Saller/MyProducts/MyProducts";
 import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import Blog from "../Pages/Blog/Blog";
+import SingleBlog from "../Pages/Blog/SingleBlog/SingleBlog";
 import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
@@ -40,7 +41,14 @@ export const routes = createBrowserRouter([
 
             {
                 path: '/blog',
-                element: <Blog></Blog>
+                element: <Blog></Blog>,
+                loader: () => fetch('https://assignment-11-server-phi.vercel.app/blogs')
+            },
+
+            {
+                path: '/blog/:id',
+                element: <SingleBlog></SingleBlog>,
+                loader: ({ params }) => fetch(`https://assignment-11-server-phi.vercel.app/blogs/${params.id}`)
             },
             {
                 path: '*',
