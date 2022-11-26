@@ -6,7 +6,7 @@ import { AuthContext } from '../../../../Context/AuthProvider/AuthProvider';
 
 
 const BookingModal = ({ productDetails }) => {
-    const { name, resalePrice, salerName } = productDetails;
+    const { name, used, photo, resalePrice, salerName } = productDetails;
 
     const { user } = useContext(AuthContext);
 
@@ -35,7 +35,10 @@ const BookingModal = ({ productDetails }) => {
             productName: name,
             salerName,
             price: resalePrice,
-            location
+            location,
+            photo,
+            used,
+            buyerPhoto: user.photoURL
         }
 
         console.log(booking)

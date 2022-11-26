@@ -5,51 +5,55 @@ const Dashboard = () => {
     const users = useLoaderData();
 
     return (
-        <div className="overflow-x-auto w-5/6 mx-auto my-10">
-            <table className="table w-full">
+        <div>
+            <h2 className='text-3xl text-center font-semibold  mt-10'>All Users</h2>
 
-                <thead>
-                    <tr>
-                        <th>
-                            Avater
-                        </th>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div className="overflow-x-auto w-5/6 mx-auto my-10">
+                <table className="table w-full">
 
-                    {
-                        users.map(user => <tr key={user._id}>
-
-                            <td>
-                                <div className="flex items-center space-x-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-circle w-16 h-16">
-                                            <img src={user?.photoURL} alt="Avater" />
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </td>
-                            <td>
-                                {user?.displayName}
-                                <br />
-                                <span className="badge badge-ghost badge-sm">{user?.email}</span>
-                            </td>
-                            <td>{user?.check === true ? 'Saller' : 'Buyer'}</td>
+                    <thead>
+                        <tr>
                             <th>
-                                <button className="btn btn-error btn-sm">Delete</button>
+                                Avater
                             </th>
-                        </tr>)
-                    }
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {
+                            users.map(user => <tr key={user._id}>
+
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-circle w-16 h-16">
+                                                <img src={user?.photoURL} alt="Avater" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    {user?.displayName}
+                                    <br />
+                                    <span className="badge badge-ghost badge-sm">{user?.email}</span>
+                                </td>
+                                <td>{user?.check === true ? 'Saller' : 'Buyer'}</td>
+                                <th>
+                                    <button className="btn btn-error btn-sm">Delete</button>
+                                </th>
+                            </tr>)
+                        }
 
 
-                </tbody>
+                    </tbody>
 
 
-            </table>
+                </table>
+            </div>
         </div>
     );
 };
