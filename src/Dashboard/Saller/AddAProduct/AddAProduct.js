@@ -48,7 +48,7 @@ const AddAProduct = () => {
                         resalePrice,
                         location,
                         used,
-                        photo: image,
+                        photo: imageData.data.url,
                         name,
                         email: user?.email
                     }

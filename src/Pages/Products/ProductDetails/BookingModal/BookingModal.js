@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Context/AuthProvider/AuthProvider';
 // import { useQuery } from '@tanstack/react-query';
 
@@ -9,7 +10,7 @@ const BookingModal = ({ productDetails }) => {
 
     const { user } = useContext(AuthContext);
 
-
+    const navigate = useNavigate();
 
 
 
@@ -54,6 +55,7 @@ const BookingModal = ({ productDetails }) => {
                 if (data.acknowledged) {
                     toast.success('We have recived Your Booking');
                     // refetch();
+                    navigate('/dashboard/my-orders')
                 }
                 else {
                     toast.error(data.message)
