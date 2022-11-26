@@ -42,13 +42,13 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>,
-                loader: () => fetch('https://assignment-11-server-phi.vercel.app/blogs')
+                loader: () => fetch('http://localhost:5000/blogs')
             },
 
             {
                 path: '/blog/:id',
                 element: <SingleBlog></SingleBlog>,
-                loader: ({ params }) => fetch(`https://assignment-11-server-phi.vercel.app/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
             },
             {
                 path: '*',

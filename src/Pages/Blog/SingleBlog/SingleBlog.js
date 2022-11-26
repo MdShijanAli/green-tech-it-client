@@ -9,7 +9,7 @@ const SingleBlog = () => {
     const [blogs, setBlogss] = useState([]);
 
     useEffect(() => {
-        fetch('https://assignment-11-server-phi.vercel.app/blogs')
+        fetch('http://localhost:5000/blogs')
             .then(res => res.json())
             .then(data => setBlogss(data))
 
