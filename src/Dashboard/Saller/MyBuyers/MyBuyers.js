@@ -1,23 +1,24 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+// import { useQuery } from '@tanstack/react-query';
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const MyBuyers = () => {
     const { user } = useContext(AuthContext);
 
-    const { data: myBuyers = [], isLoading, refetch } = useQuery({
-        queryKey: ['myBuyers'],
-        queryFn: async () => {
-            try {
-                const res = await fetch(`http://localhost:5000/my-orders/${user?.email}`);
-                const data = await res.json();
-                return data;
-            }
-            catch (error) {
-                console.log(error);
-            }
-        }
-    })
+
+
+
+    const [myBuyers, setBuyers] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/bookings')
+            .then(res => res.json())
+            .then(data => {
+                const myBuyer = data.filter(myb => myb.salerEmail === user?.email);
+                setBuyers(myBuyer)
+            })
+    }, [user?.email])
+
+
     return (
         <div>
             <h2 className='text-3xl text-center font-semibold  mt-10'>My Buyers</h2>

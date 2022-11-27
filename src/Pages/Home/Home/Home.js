@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AdvertiseSection from '../AdvertiseSection/AdvertiseSection';
 import BannerSection from '../BannerSection/BannerSection';
 import BlogSection from '../BlogSection/BlogSection';
 import CategorySection from '../CategorySection/CategorySection';
@@ -12,6 +13,7 @@ const Home = () => {
             <BannerSection></BannerSection>
             <ServiceTop></ServiceTop>
             <CategorySection></CategorySection>
+            <AdvertiseSection></AdvertiseSection>
             <section className="py-10 bg-gray-50 ">
                 <div className="px-4 mx-auto sm:px-6  max-w-7xl">
                     <div className="flex items-end justify-between">

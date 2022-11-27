@@ -68,7 +68,28 @@ const MyProducts = () => {
             })
 
     }
-    // 
+    // advertise product
+
+    const handleAdvertise = product => {
+        const advertise = {
+            product
+
+        }
+
+        fetch('http://localhost:5000/advertise', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(advertise)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Product Added Advertise Section Successfully!!!')
+                }
+            })
+    }
     return (
         <div>
             <h2 className='text-3xl text-center font-semibold  mt-10'>My products</h2>
@@ -90,7 +111,7 @@ const MyProducts = () => {
                                                 <button className="btn bg-red-700">Delete</button>
 
                                             </Link>
-                                            <Link>
+                                            <Link onClick={() => handleAdvertise(product)}>
                                                 <button className="btn bg-green-800">Available</button>
                                             </Link>
                                             <Link to={`/products/sp/${product._id}`}>
