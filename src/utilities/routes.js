@@ -90,7 +90,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <Dashboard></Dashboard>,
-                loader: () => fetch('http://localhost:5000/users')
+
             },
             {
                 path: '/dashboard/all-sellers',

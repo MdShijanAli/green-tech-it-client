@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import toast from 'react-hot-toast';
@@ -10,7 +10,7 @@ import './Header.css'
 
 const Header = () => {
 
-
+    const navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
     const { user, logOut } = useContext(AuthContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -20,6 +20,7 @@ const Header = () => {
             .then(() => {
                 console.log('successfuly logout');
                 toast.success('You have logged Out Successfully!!')
+                navigate('/')
             })
             .catch(error => {
                 console.error('error', error.message)

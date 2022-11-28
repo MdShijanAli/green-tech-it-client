@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 
 const auth = getAuth(app)
 
+
 const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
 
@@ -45,6 +46,11 @@ const AuthProvider = ({ children }) => {
 
     }
 
+    /*  const userDelete = () => {
+        
+         return deleteUser(user);
+     } */
+
     const passResetEmail = (email) => {
         return sendPasswordResetEmail(auth, email)
     }
@@ -79,8 +85,8 @@ const AuthProvider = ({ children }) => {
         updateUserProfile,
         loading,
         setLoading,
-        passResetEmail
-
+        passResetEmail,
+        // userDelete
 
 
     }

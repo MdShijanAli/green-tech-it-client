@@ -1,18 +1,64 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import toast from 'react-hot-toast';
+// import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const AllSellers = () => {
+    // const { userDelete } = useContext(AuthContext)
+    /*     const [sallers, setSallers] = useState([]);
+        useEffect(() => {
+            fetch('http://localhost:5000/users')
+                .then(res => res.json())
+                .then(data => {
+                    const showSallers = data.filter(saler => saler.check === true)
+                    // console.log(showSallers)
+    
+                    setSallers(showSallers)
+                })
+        }, []) */
 
-    const [sallers, setSallers] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
+
+    const { data: sallers = [], refetch } = useQuery({
+        queryKey: ['sallers'],
+        queryFn: async () => {
+            try {
+                const res = await fetch('http://localhost:5000/users');
+                const data = await res.json();
+                const showSallers = data.filter(saler => saler.check === true)
+                return showSallers;
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+    })
+
+
+
+
+
+
+
+    const handleDelete = user => {
+
+
+        fetch(`http://localhost:5000/user/${user._id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
             .then(res => res.json())
             .then(data => {
-                const showSallers = data.filter(saler => saler.check === true)
-                // console.log(showSallers)
-
-                setSallers(showSallers)
+                if (data.acknowledged) {
+                    toast.success('Product Deleted Successfully')
+                    refetch();
+                }
             })
-    }, [])
+    }
+
+
+
     return (
         <div>
             <h2 className='text-3xl text-center font-semibold  mt-10'>All Sellers</h2>
@@ -52,7 +98,7 @@ const AllSellers = () => {
                                 </td>
                                 <td>{user?.check === true ? 'Saller' : 'Buyer'}</td>
                                 <th>
-                                    <button className="btn btn-error btn-sm">Delete</button>
+                                    <button onClick={() => handleDelete(user)} className="btn btn-error btn-sm">Delete</button>
                                 </th>
                             </tr>)
                         }

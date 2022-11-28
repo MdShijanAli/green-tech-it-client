@@ -1,17 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllBuyers = () => {
-    const [buyers, setBuyers] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
+    /*     const [buyers, setBuyers] = useState([]);
+        useEffect(() => {
+            fetch('http://localhost:5000/users')
+                .then(res => res.json())
+                .then(data => {
+                    const showSallers = data.filter(saler => saler.check === false)
+                    // console.log(showSallers)
+    
+                    setBuyers(showSallers)
+                })
+        }, []) */
+
+
+
+    const { data: buyers = [], refetch } = useQuery({
+        queryKey: ['sallers'],
+        queryFn: async () => {
+            try {
+                const res = await fetch('http://localhost:5000/users');
+                const data = await res.json();
+                const shwoBuyers = data.filter(saler => saler.check === false)
+                return shwoBuyers;
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+    })
+
+
+
+    const handleDelete = user => {
+
+
+        fetch(`http://localhost:5000/user/${user._id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
             .then(res => res.json())
             .then(data => {
-                const showSallers = data.filter(saler => saler.check === false)
-                // console.log(showSallers)
-
-                setBuyers(showSallers)
+                if (data.acknowledged) {
+                    toast.success('Product Deleted Successfully')
+                    refetch();
+                }
             })
-    }, [])
+    }
+
+
+
+
     return (
         <div>
             <h2 className='text-3xl text-center font-semibold  mt-10'>All Buyers</h2>
@@ -51,7 +94,7 @@ const AllBuyers = () => {
                                 </td>
                                 <td>{user?.check === true ? 'Saller' : 'Buyer'}</td>
                                 <th>
-                                    <button className="btn btn-error btn-sm">Delete</button>
+                                    <button onClick={() => handleDelete(user)} className="btn btn-error btn-sm">Delete</button>
                                 </th>
                             </tr>)
                         }
