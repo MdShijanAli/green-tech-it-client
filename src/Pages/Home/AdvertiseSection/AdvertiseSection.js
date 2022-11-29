@@ -20,15 +20,17 @@ const AdvertiseSection = () => {
 
     return (
         <div>
-            <h1 className='text-5xl my-20 font-semibold text-center'>Advertisement Products</h1>
+            <h1 className=' className="text-3xl font-bold leading-tight text-center text-black sm:text-4xl lg:text-5xl mt-20'>Advertisement Products</h1>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-10 m-5 md:m-20'>
 
                 {
                     advertise.map(adv => <div key={adv._id} className="card w-full shadow-xl">
                         <figure><img className='w-full h-96' src={adv.product.photo} alt="Products" /></figure>
                         <div className="card-body">
-                            <h2 className="card-title"></h2>
-                            <h2 className='text-xl'>Seller Name: <span className='font-semibold italic text-blue-900'>{adv.product.salerName}</span></h2>
+                            <h2 className="card-title">{adv.product?.name}</h2>
+                            <h2 className='text-xl mt-10'>Seller Name: <span className='font-semibold italic text-blue-900'>{adv.product.salerName}</span></h2>
+                            <h2 className='text-xl'>Condition: <span className='font-semibold italic text-blue-900'>{adv.product?.condition}</span></h2>
+                            <h2 className='text-xl'>Brand: <span className='font-semibold italic text-blue-900'>{adv.product?.category}</span></h2>
                             <h2 className='text-xl'>Sale Price: <span className='font-semibold italic text-blue-900'>{adv.product.resalePrice} BDT</span></h2>
 
                             <Link to={`/products/sp/${adv.product._id}`}>

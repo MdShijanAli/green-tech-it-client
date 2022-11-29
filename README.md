@@ -1,6 +1,48 @@
-# Getting Started with Create React App
+# `GREEN TECHIT`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Live Link:](https://green-tech-it.web.app/)
+
+## `Repository Link Client Site`
+
+https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-freelancershijan
+
+## `Repository Link Server Site`
+
+https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-freelancershijan
+
+
+## `project's features and functionalities:`
+
+1. `React.js`
+2. `Node.js`
+3. `Express.js`
+4. `MongoDB`
+5. `Tailwindcss`
+6. `Authentication`
+7. `React Hot Toast`
+8. `React Icons, Hero Icons`
+9. `Tanstack Query`
+10. `Stripe` etc
+
+
+## `Working Steps:`
+
+1. Install `react`
+2. Install `react router dom`, `tailwindcss`, `react hot toast`, `daisyui` and others needed items
+3. create login and registration page
+4. setup `authentication` and  `social login` functionality
+5. create header
+6. create home page and home page sections
+7. create dashboard
+8. make there some routes and show there all sallers,all buyers, my orders, add product, my products and logout system
+9. make single product page to show details
+10. make booking function
+11. make blog page
+12. make contact up page
+13. make footer
+14. make responsive
+15. show my buyers in a route and others 
+
 
 ## Available Scripts
 

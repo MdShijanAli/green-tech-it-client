@@ -20,6 +20,9 @@ const AddAProduct = () => {
         const category = form.category.value;
         const image = form.image.files[0];
         const salerName = form.salerName.value;
+        const description = form.description.value;
+        const condition = form.condition.value;
+        const parchesDate = form.parchesDate.value;
 
 
 
@@ -50,7 +53,10 @@ const AddAProduct = () => {
                         used,
                         photo: imageData.data.url,
                         name,
-                        email: user?.email
+                        email: user?.email,
+                        description,
+                        condition,
+                        parchesDate
                     }
                     // console.log(userInfo)
                     // save doctor information to the database
@@ -148,6 +154,39 @@ const AddAProduct = () => {
                             <input name='used' id="used" aria-labelledby="used" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: 1 year / 6 months " required />
                         </div>
 
+                        <div className="mt-6 w-full">
+                            <label htmlFor="condition" className="text-sm font-medium leading-none text-gray-800">
+                                {" "}
+                                Condition{" "}
+                            </label>
+                            <input name='condition' id="condition" aria-labelledby="condition" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: excellent, good, fair " required />
+                        </div>
+
+                        <div className="mt-6 w-full">
+                            <label htmlFor="parchesDate" className="text-sm font-medium leading-none text-gray-800">
+                                {" "}
+                                Year of Parchase{" "}
+                            </label>
+                            <input name='parchesDate' id="parchesDate" aria-labelledby="parchesDate" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: 2022/2023/2024" required />
+                        </div>
+
+
+                        <div className="mt-6 w-full">
+                            <label htmlFor="description" className="text-sm font-medium leading-none text-gray-800">
+                                {" "}
+                                Product Description{" "}
+                            </label>
+                            <textarea rows={15} name='description' id="description" aria-labelledby="description" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: Product Description " required ></textarea>
+                        </div>
+
+                        <div className="mt-6 w-full">
+                            <label htmlFor="salerName" className="text-sm font-medium leading-none text-gray-800">
+                                {" "}
+                                Your Name{" "}
+                            </label>
+                            <input name='salerName' disabled defaultValue={user?.displayName} id="salerName" aria-labelledby="salerName" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: Md Shijan Ali " required />
+                        </div>
+
 
                         <div className="mt-6 w-full">
                             <label htmlFor="originalPrice" className="text-sm font-medium leading-none text-gray-800">
@@ -166,13 +205,7 @@ const AddAProduct = () => {
                             <input name='resalePrice' id="resalePrice" aria-labelledby="resalePrice" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: 12,000 " required />
                         </div>
 
-                        <div className="mt-6 w-full">
-                            <label htmlFor="salerName" className="text-sm font-medium leading-none text-gray-800">
-                                {" "}
-                                Your Name{" "}
-                            </label>
-                            <input name='salerName' disabled defaultValue={user?.displayName} id="salerName" aria-labelledby="salerName" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: Md Shijan Ali " required />
-                        </div>
+
 
 
                         <input className='w-full btn btn-primary mt-10' type="submit" value="Submit" />

@@ -13,7 +13,7 @@ const CategorySection = () => {
     }, [])
     return (
         <div className='mt-96'>
-            <h1 className='text-5xl my-10 font-semibold text-center'>All Categories</h1>
+            <h1 className=' className="text-3xl font-bold leading-tight text-center text-black sm:text-4xl lg:text-5xl my-20'>All Categories</h1>
             <div className=' grid grid-cols-3 gap-10 w-5/6 mx-auto'>
 
                 {

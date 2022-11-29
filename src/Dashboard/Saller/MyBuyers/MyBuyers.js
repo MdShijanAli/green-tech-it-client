@@ -39,6 +39,7 @@ const MyBuyers = () => {
                                         Buyer Name
 
                                     </th>
+                                    <th>Email</th>
                                     <th>Location</th>
                                     <th>Phone Number</th>
 
@@ -63,15 +64,16 @@ const MyBuyers = () => {
                                         </td>
                                         <td>
                                             <div>
-                                                <div className="font-bold">{order.buyerName}</div>
+                                                <div className="font-bold">{order?.buyerName}</div>
 
                                             </div>
                                         </td>
+                                        <td>{order?.email}</td>
                                         <td>
-                                            {order.location}
+                                            {order?.location}
 
                                         </td>
-                                        <td>{order.phone}</td>
+                                        <td>{order?.phone}</td>
 
                                     </tr>)
                                 }
