@@ -1,6 +1,6 @@
 # `GREEN TECHIT`
 
-[Live Link:](https://green-tech-it.web.app/)
+[Live Link](https://green-tech-it.web.app/)
 
 ## `Repository Link Client Site`
 
