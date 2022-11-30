@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../../hoocks/useTitle';
 
 const AddAProduct = () => {
     useTitle('Add a Product')
     const categories = useLoaderData();
-    const { user } = useContext(AuthContext);
+    const { user, loading, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
 
 
@@ -75,9 +76,14 @@ const AddAProduct = () => {
                         .then(result => {
                             if (result.acknowledged) {
                                 toast.success('Your Product Has Added Successfully');
-                                navigate('/dashboard/my-products')
+                                navigate('/dashboard/my-products');
+
                             }
                             console.log(result)
+                        })
+                        .catch(error => {
+                            console.error(error.message);
+                            setLoading(false)
                         })
                 }
             })
@@ -104,7 +110,7 @@ const AddAProduct = () => {
                                 {" "}
                                 Product Name{" "}
                             </label>
-                            <input name='name' id="name" aria-labelledby="name" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: Md Shijan Ali " required />
+                            <input name='name' id="name" aria-labelledby="name" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: Asus X415FA	 " required />
                         </div>
                         <div className="mt-6 w-full">
                             <label htmlFor="image" className="text-sm font-medium leading-none text-gray-800">
@@ -207,10 +213,16 @@ const AddAProduct = () => {
                             <input name='resalePrice' id="resalePrice" aria-labelledby="resalePrice" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: 12,000 " required />
                         </div>
 
+                        <div className="mt-8">
+                            <button className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
+                                {
+                                    loading ? <LoadingSpinner></LoadingSpinner> : 'Add Product'
+                                }
+                            </button>
+                        </div>
 
 
 
-                        <input className='w-full btn btn-primary mt-10' type="submit" value="Submit" />
 
                     </div>
 

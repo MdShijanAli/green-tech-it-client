@@ -24,7 +24,7 @@ const AllBuyers = () => {
             try {
                 const res = await fetch('https://assignment-12-server-neon.vercel.app/users');
                 const data = await res.json();
-                const shwoBuyers = data.filter(saler => saler.check === false)
+                const shwoBuyers = data.filter(buyer => buyer.role === "Buyer")
                 return shwoBuyers;
             }
             catch (error) {
@@ -59,53 +59,56 @@ const AllBuyers = () => {
     return (
         <div>
             <h2 className='text-3xl text-center font-semibold  mt-10'>All Buyers</h2>
+            {
+                buyers.length === 0 ? <h2 className='text-3xl font-semibold mt-10 text-center'>Here has not any Buyer</h2> :
+                    <div className="overflow-x-auto w-5/6 mx-auto my-10">
+                        <table className="table w-full">
 
-            <div className="overflow-x-auto w-5/6 mx-auto my-10">
-                <table className="table w-full">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Avater
+                                    </th>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                    <thead>
-                        <tr>
-                            <th>
-                                Avater
-                            </th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                                {
+                                    buyers.map(user => <tr key={user._id}>
 
-                        {
-                            buyers.map(user => <tr key={user._id}>
+                                        <td>
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-circle w-16 h-16">
+                                                        <img src={user?.photoURL} alt="Avater" />
+                                                    </div>
+                                                </div>
 
-                                <td>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-circle w-16 h-16">
-                                                <img src={user?.photoURL} alt="Avater" />
                                             </div>
-                                        </div>
-
-                                    </div>
-                                </td>
-                                <td>
-                                    {user?.displayName}
-                                    <br />
-                                    <span className="badge badge-ghost badge-sm">{user?.email}</span>
-                                </td>
-                                <td>{user?.check === true ? 'Saller' : 'Buyer'}</td>
-                                <th>
-                                    <button onClick={() => handleDelete(user)} className="btn btn-error btn-sm">Delete</button>
-                                </th>
-                            </tr>)
-                        }
+                                        </td>
+                                        <td>
+                                            {user?.displayName}
+                                            <br />
+                                            <span className="badge badge-ghost badge-sm">{user?.email}</span>
+                                        </td>
+                                        <td>{user?.role}</td>
+                                        <th>
+                                            <button onClick={() => handleDelete(user)} className="btn btn-error btn-sm">Delete</button>
+                                        </th>
+                                    </tr>)
+                                }
 
 
-                    </tbody>
+                            </tbody>
 
 
-                </table>
-            </div>
+                        </table>
+                    </div>
+            }
+
         </div>
     );
 };

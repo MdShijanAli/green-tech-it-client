@@ -18,8 +18,7 @@ const Register = () => {
     const [error, setError] = useState('');
     const [showpass, setShowPass] = useState(false);
     const navigate = useNavigate();
-    const { createUser, loading, setLoading, signInGoogle, updateUserProfile } = useContext(AuthContext);
-    const [checked, setChecked] = useState(false);
+    const { createUser, loading, setLoading, signInGoogle, verifyEmail, updateUserProfile } = useContext(AuthContext);
 
 
     const handleSubmit = event => {
@@ -30,12 +29,7 @@ const Register = () => {
         const confirm = form.confirm.value;
         const password = form.password.value;
         const image = form.image.files[0];
-        const check = form.check.checked;
-
-
-        setChecked(current => !current);
-
-
+        const role = form.role.value;
 
 
         // console.log(userInfo)
@@ -72,7 +66,9 @@ const Register = () => {
                         displayName: name,
                         photoURL: imageData.data.url,
                         email,
-                        check
+                        role
+
+
                     }
                     console.log(userInfo)
                     // save doctor information to the database
@@ -104,13 +100,14 @@ const Register = () => {
                         setAuthToken(result.user)
                         setError('');
                         updateUserProfile(name, imageData.data.url)
-                            .then(() => {
-                                form.reset();
-                                navigate(from, { replace: true })
+                            .then(
+                                verifyEmail()
+                                    .then(() => {
+                                        toast.success('Please Check your email for verification');
+                                        navigate(from, { replace: true })
 
-
-
-                            })
+                                    })
+                            )
                             .catch(error => setError(error.message))
                     })
                     .catch(error => {
@@ -282,11 +279,15 @@ const Register = () => {
                             {wrongPass}
                         </div>
 
-                        <div className="form-control my-5">
-                            <label className="label cursor-pointer justify-start">
-                                <input name='check' type="checkbox" value={checked} className="checkbox" />
-                                <span className="ml-5">Do you want to ReSale your Products?</span>
+                        <div className='mt-6 w-full'>
+                            <label htmlFor="role" className="text-sm font-medium leading-none text-gray-800">
+                                {" "}
+                                Select Your Role{" "}
                             </label>
+                            <select name='role' id='role' className="select select-success w-full my-2" required>
+                                <option value="Saller">Saller</option>
+                                <option value="Buyer">Buyer</option>
+                            </select>
                         </div>
 
                         <div className="mt-8">

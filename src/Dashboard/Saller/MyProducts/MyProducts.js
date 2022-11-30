@@ -115,7 +115,7 @@ const MyProducts = () => {
 
                                             </Link>
                                             <Link onClick={() => handleAdvertise(product)}>
-                                                <button className="btn bg-green-800">Available</button>
+                                                <button className="btn bg-green-800">Advertise</button>
                                             </Link>
                                             <Link to={`/products/sp/${product._id}`}>
                                                 <div className="card-actions">
