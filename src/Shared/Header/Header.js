@@ -76,7 +76,7 @@ const Header = () => {
     </React.Fragment>
 
     return (
-        <div>
+        <div className='sticky top-0 z-[9999]'>
             <nav className="w-full bg-[#004767] shadow sticky top-0 z-50">
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>

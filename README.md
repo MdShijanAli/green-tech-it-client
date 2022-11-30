@@ -11,6 +11,11 @@ https://github.com/programming-hero-web-course-4/b612-used-products-resale-clien
 https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-freelancershijan
 
 
+## `Admin Access`
+
+Email: `shijan@jesmin.com`
+Password: `Ur@li@r1%`
+
 ## `project's features and functionalities:`
 
 1. `React.js`
