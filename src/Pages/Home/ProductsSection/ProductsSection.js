@@ -7,7 +7,7 @@ const ProductsSection = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/products');
+                const res = await fetch('https://assignment-12-server-neon.vercel.app/products');
                 const data = await res.json();
                 return data;
             }
@@ -19,7 +19,7 @@ const ProductsSection = () => {
     return (
         <div>
             <h1 className=' className="text-3xl font-bold leading-tight text-center text-black sm:text-4xl lg:text-5xl mt-20'>All Products</h1>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-10 m-5 md:m-20'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20 mx-5 lg:m-20'>
 
                 {
                     products.slice(0, 3).map(product => <div key={product._id} className="card w-full shadow-xl">

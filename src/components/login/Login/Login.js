@@ -5,10 +5,11 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
 import { setAuthToken } from '../../../api/authApi';
+import useTitle from '../../../hoocks/useTitle';
 
 
 const Login = () => {
-
+    useTitle('Login')
 
 
     const navigate = useNavigate();

@@ -1,11 +1,11 @@
 import React from 'react';
 import toast from 'react-hot-toast';
-// import useTitle from '../../hoocks/useTitle';
+import useTitle from '../../hoocks/useTitle';
 
 
 const Contact = () => {
 
-    // useTitle('Contact')
+    useTitle('Contact')
 
     const handleSubmit = (event) => {
         event.preventDefault();

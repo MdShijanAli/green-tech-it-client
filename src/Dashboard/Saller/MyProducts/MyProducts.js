@@ -3,18 +3,19 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../../hoocks/useTitle';
 
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
 
-
+    useTitle('My Products')
     console.log('emailllll', user?.email)
 
 
     /*    const [myProducts, setMyProducts] = useState([]);
        useEffect(() => {
-           fetch(`http://localhost:5000/my-products/${user?.email}`)
+           fetch(`https://assignment-12-server-neon.vercel.app/my-products/${user?.email}`)
                .then(res => res.json())
                .then(data => {
                    setMyProducts(data)
@@ -31,7 +32,7 @@ const MyProducts = () => {
         queryKey: ['myProducts'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/my-products/${user?.email}`);
+                const res = await fetch(`https://assignment-12-server-neon.vercel.app/my-products/${user?.email}`);
                 const data = await res.json();
                 return data;
             }
@@ -50,7 +51,7 @@ const MyProducts = () => {
     // delete product
 
     const handleDelete = product => {
-        fetch(`http://localhost:5000/my-products/${product._id}`, {
+        fetch(`https://assignment-12-server-neon.vercel.app/my-products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -76,7 +77,7 @@ const MyProducts = () => {
 
         }
 
-        fetch('http://localhost:5000/advertise', {
+        fetch('https://assignment-12-server-neon.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

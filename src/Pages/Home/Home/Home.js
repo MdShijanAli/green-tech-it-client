@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../hoocks/useTitle';
 import AdvertiseSection from '../AdvertiseSection/AdvertiseSection';
 import BannerSection from '../BannerSection/BannerSection';
 import BlogSection from '../BlogSection/BlogSection';
@@ -9,6 +10,7 @@ import ProductsSection from '../ProductsSection/ProductsSection';
 import ServiceTop from '../ServiceTop/ServiceTop';
 
 const Home = () => {
+    useTitle('Home')
     return (
         <div>
             <BannerSection></BannerSection>
@@ -27,7 +29,7 @@ const Home = () => {
                 </div>
             </section>
             <section className="py-10 bg-gray-50 ">
-                <div className="px-4 mx-auto sm:px-6  max-w-7xl">
+                <div className=" mx-auto   lg:max-w-7xl">
                     <div className="flex items-end justify-between">
                         <div className="flex-1 text-center lg:text-left">
                             <h2 className="text-3xl font-bold leading-tight text-center text-black sm:text-4xl lg:text-5xl mt-20">Latest from blog</h2>

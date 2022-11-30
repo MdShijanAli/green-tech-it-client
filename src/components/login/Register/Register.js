@@ -4,12 +4,14 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { setAuthToken } from '../../../api/authApi';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../../hoocks/useTitle';
 import logo from '../../../images/logo.png'
 import img from '../../../images/shijan.jpg'
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
 
 
 const Register = () => {
+    useTitle('Register')
     const [wrongPass, setWrongPass] = useState('');
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -75,7 +77,7 @@ const Register = () => {
                     console.log(userInfo)
                     // save doctor information to the database
 
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://assignment-12-server-neon.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

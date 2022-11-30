@@ -1,16 +1,17 @@
 // import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../../hoocks/useTitle';
 
 const MyBuyers = () => {
     const { user } = useContext(AuthContext);
 
-
+    useTitle('My Buyers')
 
 
     const [myBuyers, setBuyers] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/bookings')
+        fetch('https://assignment-12-server-neon.vercel.app/bookings')
             .then(res => res.json())
             .then(data => {
                 const myBuyer = data.filter(myb => myb.salerEmail === user?.email);

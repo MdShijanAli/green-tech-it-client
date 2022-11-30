@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../hoocks/useTitle';
 
 const AllBuyers = () => {
     /*     const [buyers, setBuyers] = useState([]);
         useEffect(() => {
-            fetch('http://localhost:5000/users')
+            fetch('https://assignment-12-server-neon.vercel.app/users')
                 .then(res => res.json())
                 .then(data => {
                     const showSallers = data.filter(saler => saler.check === false)
@@ -15,13 +16,13 @@ const AllBuyers = () => {
                 })
         }, []) */
 
-
+    useTitle('All Buyers')
 
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['sallers'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/users');
+                const res = await fetch('https://assignment-12-server-neon.vercel.app/users');
                 const data = await res.json();
                 const shwoBuyers = data.filter(saler => saler.check === false)
                 return shwoBuyers;
@@ -37,7 +38,7 @@ const AllBuyers = () => {
     const handleDelete = user => {
 
 
-        fetch(`http://localhost:5000/user/${user._id}`, {
+        fetch(`https://assignment-12-server-neon.vercel.app/user/${user._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

@@ -19,6 +19,7 @@ import AllProducts from "../Pages/Products/AllProducts/AllProducts";
 import CategoryProductsPage from "../Pages/Products/CategoryProductspage/CategoryProductsPage";
 import ProductDetails from "../Pages/Products/ProductDetails/ProductDetails";
 import Products from "../Pages/Products/Products";
+import PriveteRoute from "./PrivateRoute/PriveteRoute";
 
 
 export const routes = createBrowserRouter([
@@ -42,13 +43,13 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>,
-                loader: () => fetch('http://localhost:5000/blogs')
+                loader: () => fetch('https://assignment-12-server-neon.vercel.app/blogs')
             },
 
             {
                 path: '/blog/:id',
                 element: <SingleBlog></SingleBlog>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-12-server-neon.vercel.app/blogs/${params.id}`)
             },
             {
                 path: '*',
@@ -68,18 +69,18 @@ export const routes = createBrowserRouter([
             {
                 path: '/products',
                 element: <AllProducts></AllProducts>,
-                loader: () => fetch('http://localhost:5000/products')
+                loader: () => fetch('https://assignment-12-server-neon.vercel.app/products')
             },
             {
                 path: '/products/:name',
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.name}`),
+                loader: ({ params }) => fetch(`https://assignment-12-server-neon.vercel.app/products/${params.name}`),
                 element: <CategoryProductsPage></CategoryProductsPage>
             },
 
             {
                 path: '/products/sp/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
-                element: <ProductDetails></ProductDetails>
+                loader: ({ params }) => fetch(`https://assignment-12-server-neon.vercel.app/product/${params.id}`),
+                element: <PriveteRoute><ProductDetails></ProductDetails></PriveteRoute>
             }
         ]
     },
@@ -111,7 +112,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard/add-a-product',
                 element: <AddAProduct></AddAProduct>,
-                loader: () => fetch('http://localhost:5000/categories')
+                loader: () => fetch('https://assignment-12-server-neon.vercel.app/categories')
             },
             {
                 path: '/dashboard/my-buyers',

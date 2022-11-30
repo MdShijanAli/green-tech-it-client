@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import useTitle from '../../hoocks/useTitle';
+import useTitle from '../../hoocks/useTitle';
 
 const ErrorPage = () => {
-    // useTitle('404 not found')
+    useTitle('404 not found')
     return (
         <div>
 

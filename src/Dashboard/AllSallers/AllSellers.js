@@ -1,13 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../hoocks/useTitle';
 // import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const AllSellers = () => {
     // const { userDelete } = useContext(AuthContext)
     /*     const [sallers, setSallers] = useState([]);
         useEffect(() => {
-            fetch('http://localhost:5000/users')
+            fetch('https://assignment-12-server-neon.vercel.app/users')
                 .then(res => res.json())
                 .then(data => {
                     const showSallers = data.filter(saler => saler.check === true)
@@ -17,12 +18,12 @@ const AllSellers = () => {
                 })
         }, []) */
 
-
+    useTitle('All Sallers')
     const { data: sallers = [], refetch } = useQuery({
         queryKey: ['sallers'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/users');
+                const res = await fetch('https://assignment-12-server-neon.vercel.app/users');
                 const data = await res.json();
                 const showSallers = data.filter(saler => saler.check === true)
                 return showSallers;
@@ -42,7 +43,7 @@ const AllSellers = () => {
     const handleDelete = user => {
 
 
-        fetch(`http://localhost:5000/user/${user._id}`, {
+        fetch(`https://assignment-12-server-neon.vercel.app/user/${user._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

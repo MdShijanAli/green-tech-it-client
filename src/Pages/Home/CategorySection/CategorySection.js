@@ -5,16 +5,16 @@ const CategorySection = () => {
 
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://assignment-12-server-neon.vercel.app/categories')
             .then(res => res.json())
             .then(data => {
                 setCategories(data)
             })
     }, [])
     return (
-        <div className='mt-96'>
+        <div className='lg:mt-96'>
             <h1 className=' className="text-3xl font-bold leading-tight text-center text-black sm:text-4xl lg:text-5xl my-20'>All Categories</h1>
-            <div className=' grid grid-cols-3 gap-10 w-5/6 mx-auto'>
+            <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:w-5/6 mx-5 lg:mx-auto'>
 
                 {
                     categories.map(category => <div key={category._id} className="card w-full bg-base-100 shadow-xl image-full">

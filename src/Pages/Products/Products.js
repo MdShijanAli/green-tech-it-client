@@ -1,8 +1,10 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import useTitle from '../../hoocks/useTitle';
 import Header from '../../Shared/Header/Header';
 
 const Products = () => {
+    useTitle('Products')
     return (
         <div>
             <Header></Header>

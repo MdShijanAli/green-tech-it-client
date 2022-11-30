@@ -5,7 +5,7 @@ const SingleBlogDetails = ({ singleBlog }) => {
     console.log(singleBlog);
     const { author, comment, date, description, like, name, photo, view } = singleBlog;
     return (
-        <div className='md:px-20 md:my-20'>
+        <div className='md:px-20 '>
             <img className='rounded-l-3xl w-full' src={photo} alt="" />
             <h1 className='text-5xl my-5 font-semibold'>{name}</h1>
             <p className='mb-10 text-gray-600 font-semibold'>{description}</p>

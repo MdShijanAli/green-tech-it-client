@@ -1,15 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../../hoocks/useTitle';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
-
+    useTitle('My Orders')
     const { data: myOrders = [], refetch } = useQuery({
         queryKey: ['myOrders'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/my-orders/${user?.email}`);
+                const res = await fetch(`https://assignment-12-server-neon.vercel.app/my-orders/${user?.email}`);
                 const data = await res.json();
                 return data;
             }

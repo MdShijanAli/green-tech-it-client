@@ -5,7 +5,7 @@ const BlogSection = () => {
     const [blogss, setBlogss] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/home-blogs')
+        fetch('https://assignment-12-server-neon.vercel.app/home-blogs')
             .then(res => res.json())
             .then(data => setBlogss(data))
 
@@ -13,7 +13,7 @@ const BlogSection = () => {
 
     console.log(blogss);
     return (
-        <div className='mx-5 md:grid md:grid-cols-3 md:gap-5 md:mx-auto mt-8 '>
+        <div className='mx-5 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-5 lg:mx-auto mt-8 '>
             {
                 blogss.map(blg => <div key={blg.id} className="overflow-hidden my-10  bg-white rounded shadow">
                     <div className="p-5">

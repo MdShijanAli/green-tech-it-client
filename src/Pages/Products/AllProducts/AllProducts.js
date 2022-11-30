@@ -6,7 +6,7 @@ const AllProducts = () => {
     return (
         <div>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-10 m-5 md:m-20'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 m-5 md:m-20'>
                 {
                     products.map(product => <div key={product._id} className="card w-full shadow-xl">
                         <figure><img className='w-full h-96' src={product.photo} alt="Products" /></figure>

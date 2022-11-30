@@ -8,7 +8,7 @@ const AdvertiseSection = () => {
         queryKey: ['advertise'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/advertise');
+                const res = await fetch('https://assignment-12-server-neon.vercel.app/advertise');
                 const data = await res.json();
                 return data;
             }
@@ -21,7 +21,7 @@ const AdvertiseSection = () => {
     return (
         <div>
             <h1 className=' className="text-3xl font-bold leading-tight text-center text-black sm:text-4xl lg:text-5xl mt-20'>Advertisement Products</h1>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-10 m-5 md:m-20'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-5 mt-20 lg:m-20'>
 
                 {
                     advertise.map(adv => <div key={adv._id} className="card w-full shadow-xl">

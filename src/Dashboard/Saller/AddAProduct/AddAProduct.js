@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../../hoocks/useTitle';
 
 const AddAProduct = () => {
+    useTitle('Add a Product')
     const categories = useLoaderData();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -61,7 +63,7 @@ const AddAProduct = () => {
                     // console.log(userInfo)
                     // save doctor information to the database
 
-                    fetch('http://localhost:5000/add-a-product', {
+                    fetch('https://assignment-12-server-neon.vercel.app/add-a-product', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

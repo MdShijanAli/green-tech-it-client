@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const CategoryProductsPage = () => {
     const singleCategoryProducts = useLoaderData();
+
     console.log(singleCategoryProducts);
     return (
         <div>

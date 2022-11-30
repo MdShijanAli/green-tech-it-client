@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../../hoocks/useTitle';
 import BookingModal from './BookingModal/BookingModal';
 // import { useQuery } from '@tanstack/react-query';
 const ProductDetails = () => {
@@ -10,7 +11,7 @@ const ProductDetails = () => {
         const { data: productDetails = [], refetch } = useQuery({
             queryKey: ['productDetails'],
             queryFn: async ({ params }) => {
-                const res = await fetch(`http://localhost:5000/product/${params.id}`)
+                const res = await fetch(`https://assignment-12-server-neon.vercel.app/product/${params.id}`)
                 const data = await res.json();
                 return data;
     
@@ -20,7 +21,7 @@ const ProductDetails = () => {
         }) */
     const { name, photo, location, resalePrice, parchesDate, originalPrice, category, description, condition, used, salerName } = productDetails;
 
-
+    useTitle(`${name}`)
 
     return (
         <div className="card w-3/4 mx-auto my-20 bg-base-100 shadow-xl">
