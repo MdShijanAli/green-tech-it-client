@@ -24,7 +24,7 @@ const ProductDetails = () => {
     useTitle(`${name}`)
 
     return (
-        <div className="card w-3/4 mx-auto my-20 bg-base-100 shadow-xl">
+        <div className="card lg:w-3/4 mx-5 lg:mx-auto my-20 bg-base-100 shadow-xl">
             <figure><img className='w-1/2' src={photo} alt="Product" /></figure>
             <div className="card-body">
                 <h2 className="text-3xl font-semibold mb-10">{name}</h2>

@@ -79,10 +79,14 @@ const Header = () => {
         <div className='sticky top-0 z-[9999]'>
             <nav className="w-full bg-[#004767] shadow sticky top-0 z-50">
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
-                    <div>
-                        <div className="flex items-center justify-between py-3  md:block">
+                    <div className='grid grid-cols-3 items-center'>
+                        <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost justify-start lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+
+                        <div className="flex col-span-2 items-center justify-between py-3  md:block">
                             <NavLink to='/'>
-                                <img className='h-20' src={logo} alt="" />
+                                <img className='h-20 ' src={logo} alt="" />
                             </NavLink>
                             <div className="md:hidden">
                                 <button
@@ -127,13 +131,7 @@ const Header = () => {
                             className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
                                 }`}
                         >
-
-
-
                             {menuItems}
-
-
-
 
                             <div className="mt-3 space-y-2 md:hidden ">
                                 {
@@ -212,9 +210,6 @@ const Header = () => {
 
 
                     </div>
-
-
-
 
 
 

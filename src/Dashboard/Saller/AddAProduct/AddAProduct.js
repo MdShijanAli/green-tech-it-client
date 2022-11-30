@@ -83,9 +83,12 @@ const AddAProduct = () => {
                         })
                         .catch(error => {
                             console.error(error.message);
-                            setLoading(false)
+                            setLoading(false);
                         })
                 }
+            })
+            .catch(error => {
+                console.log(error)
             })
 
     }
@@ -213,8 +216,8 @@ const AddAProduct = () => {
                             <input name='resalePrice' id="resalePrice" aria-labelledby="resalePrice" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: 12,000 " required />
                         </div>
 
-                        <div className="mt-8">
-                            <button className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
+                        <div className='mt-6'>
+                            <button type="submit" className=" items-center justify-center w-full  font-semibold text-white transition-all duration-200 btn btn-primary border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700">
                                 {
                                     loading ? <LoadingSpinner></LoadingSpinner> : 'Add Product'
                                 }

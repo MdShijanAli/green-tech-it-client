@@ -1,13 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading/Loading';
 import useTitle from '../../hoocks/useTitle';
 
 const Dashboard = () => {
 
     useTitle('Dashboard')
 
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             try {
@@ -22,7 +23,9 @@ const Dashboard = () => {
     })
 
 
-
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
 
 

@@ -86,37 +86,37 @@ export const routes = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PriveteRoute><DashboardLayout></DashboardLayout></PriveteRoute>,
         children: [
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>,
+                element: <PriveteRoute><Dashboard></Dashboard></PriveteRoute>
 
             },
             {
                 path: '/dashboard/all-sellers',
-                element: <AllSellers></AllSellers>
+                element: <PriveteRoute><AllSellers></AllSellers></PriveteRoute>
             },
             {
                 path: '/dashboard/all-buyers',
-                element: <AllBuyers></AllBuyers>
+                element: <PriveteRoute><AllBuyers></AllBuyers></PriveteRoute>
             },
             {
                 path: '/dashboard/my-orders',
-                element: <MyOrders></MyOrders>
+                element: <PriveteRoute><MyOrders></MyOrders></PriveteRoute>
             },
             {
                 path: '/dashboard/my-products',
-                element: <MyProducts></MyProducts>
+                element: <PriveteRoute><MyProducts></MyProducts></PriveteRoute>
             },
             {
                 path: '/dashboard/add-a-product',
-                element: <AddAProduct></AddAProduct>,
+                element: <PriveteRoute><AddAProduct></AddAProduct></PriveteRoute>,
                 loader: () => fetch('https://assignment-12-server-neon.vercel.app/categories')
             },
             {
                 path: '/dashboard/my-buyers',
-                element: <MyBuyers></MyBuyers>
+                element: <PriveteRoute><MyBuyers></MyBuyers></PriveteRoute>
             }
 
 

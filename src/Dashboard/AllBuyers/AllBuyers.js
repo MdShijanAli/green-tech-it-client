@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading/Loading';
 import useTitle from '../../hoocks/useTitle';
 
 const AllBuyers = () => {
@@ -18,7 +19,7 @@ const AllBuyers = () => {
 
     useTitle('All Buyers')
 
-    const { data: buyers = [], refetch } = useQuery({
+    const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ['sallers'],
         queryFn: async () => {
             try {
@@ -33,6 +34,9 @@ const AllBuyers = () => {
         }
     })
 
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
 
     const handleDelete = user => {

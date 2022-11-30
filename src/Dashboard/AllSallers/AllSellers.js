@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading/Loading';
 import useTitle from '../../hoocks/useTitle';
 // import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
@@ -19,7 +20,7 @@ const AllSellers = () => {
         }, []) */
 
     useTitle('All Sallers')
-    const { data: sallers = [], refetch } = useQuery({
+    const { data: sallers = [], isLoading, refetch } = useQuery({
         queryKey: ['sallers'],
         queryFn: async () => {
             try {
@@ -35,7 +36,9 @@ const AllSellers = () => {
     })
 
 
-
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
 
 

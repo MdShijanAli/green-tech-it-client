@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../../hoocks/useTitle';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
     useTitle('My Orders')
-    const { data: myOrders = [], refetch } = useQuery({
+    const { data: myOrders = [], isLoading } = useQuery({
         queryKey: ['myOrders'],
         queryFn: async () => {
             try {
@@ -20,6 +21,9 @@ const MyOrders = () => {
         }
     })
 
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div>

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../../hoocks/useTitle';
 
@@ -28,7 +29,7 @@ const MyProducts = () => {
 
 
 
-    const { data: myProducts = [], refetch } = useQuery({
+    const { data: myProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['myProducts'],
         queryFn: async () => {
             try {
@@ -43,7 +44,9 @@ const MyProducts = () => {
     })
 
 
-
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
 
 

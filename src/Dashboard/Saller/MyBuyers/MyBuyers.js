@@ -1,5 +1,7 @@
 // import { useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState, useEffect } from 'react';
+import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../../hoocks/useTitle';
 
@@ -9,15 +11,24 @@ const MyBuyers = () => {
     useTitle('My Buyers')
 
 
-    const [myBuyers, setBuyers] = useState([]);
-    useEffect(() => {
-        fetch('https://assignment-12-server-neon.vercel.app/bookings')
-            .then(res => res.json())
-            .then(data => {
+    const { data: myBuyers = [], isLoading } = useQuery({
+        queryKey: ['myBuyers'],
+        queryFn: async () => {
+            try {
+                const res = await fetch('https://assignment-12-server-neon.vercel.app/bookings');
+                const data = await res.json();
                 const myBuyer = data.filter(myb => myb.salerEmail === user?.email);
-                setBuyers(myBuyer)
-            })
-    }, [user?.email])
+                return myBuyer;
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+    })
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
 
     return (
