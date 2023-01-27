@@ -139,7 +139,7 @@ const Header = () => {
 
                                         {
                                             user?.photoURL ? <>
-                                                <img onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={user?.photoURL} ></img>
+                                                <img onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mr-2' alt='profilePhoto' src={user?.photoURL} ></img>
                                                 {userDash}
                                             </> :
                                                 <UserCircleIcon onClick={() => setIsDropdownOpen(!isDropdownOpen)} title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
@@ -176,7 +176,7 @@ const Header = () => {
                         {
                             user?.uid && <div>
                                 {
-                                    user?.photoURL ? <img onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='w-16 h-16 rounded-full mr-2' alt='profilePhoto' src={user?.photoURL} ></img> : <UserCircleIcon onClick={() => setIsDropdownOpen(!isDropdownOpen)} title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
+                                    user?.photoURL ? <img onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mr-2' alt='profilePhoto' src={user?.photoURL} ></img> : <UserCircleIcon onClick={() => setIsDropdownOpen(!isDropdownOpen)} title={user?.displayName} className='w-16 h-16 text-white mr-2'></UserCircleIcon>
                                 }
 
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, {useReducer, useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -17,8 +17,11 @@ const Register = () => {
     const from = location.state?.from?.pathname || '/';
     const [error, setError] = useState('');
     const [showpass, setShowPass] = useState(false);
+    const [rolee, setRolee] = useState('Buyer');
     const navigate = useNavigate();
     const { createUser, loading, setLoading, signInGoogle, verifyEmail, updateUserProfile } = useContext(AuthContext);
+
+
 
 
     const handleSubmit = event => {
@@ -32,7 +35,7 @@ const Register = () => {
         const role = form.role.value;
 
 
-        // console.log(userInfo)
+
 
         if (!/(?=.*[!@#$%^&*])/.test(password)) {
             setError('Please add a special carecter')
@@ -66,7 +69,7 @@ const Register = () => {
                         displayName: name,
                         photoURL: imageData.data.url,
                         email,
-                        role
+                        role: rolee
 
 
                     }
@@ -194,7 +197,9 @@ const Register = () => {
                                 {" "}
                                 Name{" "}
                             </label>
-                            <input name='name' id="name" aria-labelledby="name" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: Md Shijan Ali " required />
+                            <input
+                              
+                             name='name' id="name" aria-labelledby="name" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: Md Shijan Ali " required />
                         </div>
                         <div className="mt-6 w-full">
                             <label htmlFor="photoURL" className="text-sm font-medium leading-none text-gray-800">
@@ -214,7 +219,9 @@ const Register = () => {
                                 {" "}
                                 Email{" "}
                             </label>
-                            <input name='email' id="email" aria-labelledby="email" type="email" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2" placeholder="e.g: john@gmail.com " required />
+                            <input
+                              
+                            name='email' id="email" aria-labelledby="email" type="email" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2" placeholder="e.g: john@gmail.com " required />
                         </div>
                         <div className="mt-6 w-full">
                             <label htmlFor="myInput" className="text-sm font-medium leading-none text-gray-800">
@@ -284,9 +291,11 @@ const Register = () => {
                                 {" "}
                                 Select Your Role{" "}
                             </label>
-                            <select name='role' id='role' className="select select-success w-full my-2" required>
-                                <option value="Saller">Saller</option>
+                            <select
+                             onChange={(e)=>setRolee(e.target.value)} 
+                            name='role' id='role' className="select select-success w-full my-2" required>
                                 <option value="Buyer">Buyer</option>
+                                <option value="Saller">Saller</option>
                             </select>
                         </div>
 
