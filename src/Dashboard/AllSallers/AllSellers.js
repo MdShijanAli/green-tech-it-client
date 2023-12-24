@@ -9,7 +9,7 @@ const AllSellers = () => {
     // const { userDelete } = useContext(AuthContext)
     /*     const [sallers, setSallers] = useState([]);
         useEffect(() => {
-            fetch('https://assignment-12-server-neon.vercel.app/users')
+            fetch('https://green-tech-it-server.vercel.app/users')
                 .then(res => res.json())
                 .then(data => {
                     const showSallers = data.filter(saler => saler.check === true)
@@ -24,7 +24,7 @@ const AllSellers = () => {
         queryKey: ['sallers'],
         queryFn: async () => {
             try {
-                const res = await fetch('https://assignment-12-server-neon.vercel.app/users');
+                const res = await fetch('https://green-tech-it-server.vercel.app/users');
                 const data = await res.json();
                 const showSallers = data.filter(saller => saller.role === "Saller")
                 return showSallers;
@@ -46,7 +46,7 @@ const AllSellers = () => {
     const handleDelete = user => {
 
 
-        fetch(`https://assignment-12-server-neon.vercel.app/user/${user._id}`, {
+        fetch(`https://green-tech-it-server.vercel.app/user/${user._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

@@ -9,7 +9,7 @@ const SingleBlog = () => {
     const [blogs, setBlogss] = useState([]);
 
     useEffect(() => {
-        fetch('https://assignment-12-server-neon.vercel.app/blogs')
+        fetch('https://green-tech-it-server.vercel.app/blogs')
             .then(res => res.json())
             .then(data => setBlogss(data))
 

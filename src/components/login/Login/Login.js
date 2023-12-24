@@ -4,7 +4,6 @@ import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
-import { setAuthToken } from '../../../api/authApi';
 import useTitle from '../../../hoocks/useTitle';
 
 
@@ -32,7 +31,7 @@ const Login = () => {
                 const user = result.user;
                 form.reset();
                 setError('');
-                setAuthToken(result.user)
+               
                 navigate(from, { replace: true });
                 console.log('Login User from form', user)
             })
@@ -47,7 +46,7 @@ const Login = () => {
         signInGoogle()
             .then(result => {
                 const user = result.user;
-                setAuthToken(result.user)
+                
                 console.log('New User From Google', user);
                 navigate(from, { replace: true })
             })

@@ -11,7 +11,7 @@ const Footer = () => {
     return (
         <div>
             <section className="py-2 bg-gray-800">
-                <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+                <div className="max-w-7xl mx-auto px-6 c">
                     <div className="text-center xl:flex xl:items-center xl:justify-between xl:text-left">
                         <div className="xl:flex xl:items-center xl:justify-start">
                             <img className="w-auto mx-auto h-20" src={logo} alt="" />

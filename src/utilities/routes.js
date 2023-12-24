@@ -43,13 +43,13 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>,
-                loader: () => fetch('https://assignment-12-server-neon.vercel.app/blogs')
+                loader: () => fetch('https://green-tech-it-server.vercel.app/blogs')
             },
 
             {
                 path: '/blog/:id',
                 element: <SingleBlog></SingleBlog>,
-                loader: ({ params }) => fetch(`https://assignment-12-server-neon.vercel.app/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://green-tech-it-server.vercel.app/blogs/${params.id}`)
             },
             {
                 path: '*',
@@ -69,17 +69,17 @@ export const routes = createBrowserRouter([
             {
                 path: '/products',
                 element: <AllProducts></AllProducts>,
-                loader: () => fetch('https://assignment-12-server-neon.vercel.app/products')
+                loader: () => fetch('https://green-tech-it-server.vercel.app/products')
             },
             {
                 path: '/products/:name',
-                loader: ({ params }) => fetch(`https://assignment-12-server-neon.vercel.app/products/${params.name}`),
+                loader: ({ params }) => fetch(`https://green-tech-it-server.vercel.app/products/${params.name}`),
                 element: <CategoryProductsPage></CategoryProductsPage>
             },
 
             {
                 path: '/products/sp/:id',
-                loader: ({ params }) => fetch(`https://assignment-12-server-neon.vercel.app/product/${params.id}`),
+                loader: ({ params }) => fetch(`https://green-tech-it-server.vercel.app/product/${params.id}`),
                 element: <PriveteRoute><ProductDetails></ProductDetails></PriveteRoute>
             }
         ]
@@ -112,7 +112,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard/add-a-product',
                 element: <PriveteRoute><AddAProduct></AddAProduct></PriveteRoute>,
-                loader: () => fetch('https://assignment-12-server-neon.vercel.app/categories')
+                loader: () => fetch('https://green-tech-it-server.vercel.app/categories')
             },
             {
                 path: '/dashboard/my-buyers',

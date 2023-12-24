@@ -14,7 +14,7 @@ const Header = () => {
     const [navbar, setNavbar] = useState(false);
     const { user, logOut } = useContext(AuthContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    console.log('header user', user)
+    // console.log('header user', user)
     const handleLogout = () => {
         logOut()
             .then(() => {
@@ -78,7 +78,7 @@ const Header = () => {
     return (
         <div className='sticky top-0 z-[9999]'>
             <nav className="w-full bg-[#004767] shadow sticky top-0 z-50">
-                <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+                <div className="justify-between max-w-7xl mx-auto px-6 md:items-center md:flex">
                     <div className='grid grid-cols-3 items-center'>
                         <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost justify-start lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>

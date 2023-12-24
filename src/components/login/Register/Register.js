@@ -1,8 +1,7 @@
-import React, {useReducer, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { setAuthToken } from '../../../api/authApi';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../../hoocks/useTitle';
 import logo from '../../../images/logo.png'
@@ -76,7 +75,7 @@ const Register = () => {
                     console.log(userInfo)
                     // save doctor information to the database
 
-                    fetch('https://assignment-12-server-neon.vercel.app/users', {
+                    fetch('https://green-tech-it-server.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -100,7 +99,7 @@ const Register = () => {
 
                 createUser(email, password)
                     .then(result => {
-                        setAuthToken(result.user)
+
                         setError('');
                         updateUserProfile(name, imageData.data.url)
                             .then(
@@ -138,7 +137,7 @@ const Register = () => {
         signInGoogle()
             .then(result => {
                 const user = result.user;
-                setAuthToken(result.user)
+                
                 console.log('New User From Google', user);
                 navigate(from, { replace: true })
             })

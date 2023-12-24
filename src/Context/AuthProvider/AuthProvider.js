@@ -11,10 +11,10 @@ const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
 
     const [user, setUser] = useState(null);
-    console.log(user)
+    // console.log(user)
     const [loading, setLoading] = useState(true);
 
-    console.log('authprovider', user)
+    // console.log('authprovider', user)
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('inside changed', currentUser);
+            // console.log('inside changed', currentUser);
             setUser(currentUser);
 
 

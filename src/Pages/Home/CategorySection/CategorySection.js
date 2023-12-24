@@ -1,32 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Heading from '../../../components/Heading';
+import Button from '../../../components/Button';
+import axios from 'axios';
 
 const CategorySection = () => {
 
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch('https://assignment-12-server-neon.vercel.app/categories')
-            .then(res => res.json())
-            .then(data => {
-                setCategories(data)
+        axios.get('https://green-tech-it-server.vercel.app/categories')
+            .then(res => {
+            setCategories(res.data)
             })
+            .catch(err => {
+            console.error(err.messages)
+        })
     }, [])
     return (
-        <div className='lg:mt-96'>
-            <h1 className=' className="text-3xl font-bold leading-tight text-center text-black sm:text-4xl lg:text-5xl my-20'>All Categories</h1>
-            <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:w-5/6 mx-5 lg:mx-auto'>
+        <div className='max-w-7xl mx-auto px-6 py-14'>
+            <Heading>All Categories</Heading>
+            <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-16'>
 
                 {
-                    categories.map(category => <div key={category._id} className="card w-full bg-base-100 shadow-xl image-full">
-                        <figure><img src={category.photo} alt="category" /></figure>
-                        <div className="card-body">
-                            <h2 className="card-title text-4xl  justify-center mt-28">{category.name}</h2>
-                            <div className="card-actions justify-center mt-4">
+                    categories.map(category => <div key={category._id} style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(${category?.photo})` }} className="w-full sm:h-[300px] h-[250px] flex items-center justify-center bg-cover bg-no-repeat rounded-sm">
+                        
+
+                            <div>
+                            <h2 className="text-h1 text-white uppercase text-center">{category.name}</h2>
+                            <div className="text-centera mt-4">
                                 <Link to={`/products/${category.name}`}>
-                                    <button className="btn btn-primary">See All</button>
+                                   <Button>See All</Button>
                                 </Link>
                             </div>
-                        </div>
+                            </div>
+                
                     </div>)
                 }
 

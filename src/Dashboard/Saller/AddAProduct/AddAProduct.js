@@ -64,7 +64,7 @@ const AddAProduct = () => {
                     // console.log(userInfo)
                     // save doctor information to the database
 
-                    fetch('https://assignment-12-server-neon.vercel.app/add-a-product', {
+                    fetch('https://green-tech-it-server.vercel.app/add-a-product', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

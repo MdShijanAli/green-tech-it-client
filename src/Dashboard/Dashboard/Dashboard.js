@@ -12,7 +12,7 @@ const Dashboard = () => {
         queryKey: ['users'],
         queryFn: async () => {
             try {
-                const res = await fetch('https://assignment-12-server-neon.vercel.app/users');
+                const res = await fetch('https://green-tech-it-server.vercel.app/users');
                 const data = await res.json();
                 return data;
             }
@@ -32,7 +32,7 @@ const Dashboard = () => {
     const handleDelete = user => {
 
 
-        fetch(`https://assignment-12-server-neon.vercel.app/user/${user._id}`, {
+        fetch(`https://green-tech-it-server.vercel.app/user/${user._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

@@ -11,7 +11,7 @@ const ProductDetails = () => {
         const { data: productDetails = [], refetch } = useQuery({
             queryKey: ['productDetails'],
             queryFn: async ({ params }) => {
-                const res = await fetch(`https://assignment-12-server-neon.vercel.app/product/${params.id}`)
+                const res = await fetch(`https://green-tech-it-server.vercel.app/product/${params.id}`)
                 const data = await res.json();
                 return data;
     

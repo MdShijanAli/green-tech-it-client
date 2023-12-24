@@ -16,7 +16,7 @@ const MyProducts = () => {
 
     /*    const [myProducts, setMyProducts] = useState([]);
        useEffect(() => {
-           fetch(`https://assignment-12-server-neon.vercel.app/my-products/${user?.email}`)
+           fetch(`https://green-tech-it-server.vercel.app/my-products/${user?.email}`)
                .then(res => res.json())
                .then(data => {
                    setMyProducts(data)
@@ -33,7 +33,7 @@ const MyProducts = () => {
         queryKey: ['myProducts'],
         queryFn: async () => {
             try {
-                const res = await fetch(`https://assignment-12-server-neon.vercel.app/my-products/${user?.email}`);
+                const res = await fetch(`https://green-tech-it-server.vercel.app/my-products/${user?.email}`);
                 const data = await res.json();
                 return data;
             }
@@ -54,7 +54,7 @@ const MyProducts = () => {
     // delete product
 
     const handleDelete = product => {
-        fetch(`https://assignment-12-server-neon.vercel.app/my-products/${product._id}`, {
+        fetch(`https://green-tech-it-server.vercel.app/my-products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -80,7 +80,7 @@ const MyProducts = () => {
 
         }
 
-        fetch('https://assignment-12-server-neon.vercel.app/advertise', {
+        fetch('https://green-tech-it-server.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

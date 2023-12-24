@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const BannerSection = () => {
     return (
         <section
-            className="relative bg-[url(https://asia.dynabook.com/assets_new/images/home-banner.png)] bg-cover bg-center bg-no-repeat z-0 "
+            className="-z-10 relative bg-[url(https://asia.dynabook.com/assets_new/images/home-banner.png)] bg-cover bg-center bg-no-repeat"
         >
 
             <div

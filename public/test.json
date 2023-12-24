@@ -1,0 +1,14 @@
+[
+  {
+  "name": "Asus",
+  "photo": "/images/category-1.jpg"
+  },
+  {
+  "name": "hp",
+  "photo": "/images/category-2.jpeg"
+  },
+  {
+  "name": "Macbook",
+  "photo": "/images/category-3.jpg"
+  }
+  ]
