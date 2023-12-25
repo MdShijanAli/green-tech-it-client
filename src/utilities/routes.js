@@ -10,8 +10,6 @@ import MyBuyers from "../Dashboard/Saller/MyBuyers/MyBuyers";
 import MyProducts from "../Dashboard/Saller/MyProducts/MyProducts";
 import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
-import Blog from "../Pages/Blog/Blog";
-import SingleBlog from "../Pages/Blog/SingleBlog/SingleBlog";
 import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
@@ -19,6 +17,9 @@ import AllProducts from "../Pages/Products/AllProducts/AllProducts";
 import CategoryProductsPage from "../Pages/Products/CategoryProductspage/CategoryProductsPage";
 import ProductDetails from "../Pages/Products/ProductDetails/ProductDetails";
 import PriveteRoute from "./PrivateRoute/PriveteRoute";
+import BlogLayout from "../layout/BlogLayout";
+import BlogPage from "../Pages/Blog/BlogPage/BlogPage";
+import BlogDetails from "../Pages/Blog/BlogPage/BlogDetails";
 
 
 export const routes = createBrowserRouter([
@@ -39,17 +40,6 @@ export const routes = createBrowserRouter([
                 element: <Register></Register>
             },
 
-            {
-                path: '/blog',
-                element: <Blog></Blog>,
-                loader: () => fetch('https://green-tech-it-server.vercel.app/blogs')
-            },
-
-            {
-                path: '/blog/:id',
-                element: <SingleBlog></SingleBlog>,
-                loader: ({ params }) => fetch(`https://green-tech-it-server.vercel.app/blogs/${params.id}`)
-            },
             {
                 path: '*',
                 element: <ErrorPage></ErrorPage>
@@ -75,6 +65,24 @@ export const routes = createBrowserRouter([
                 element: <PriveteRoute><ProductDetails></ProductDetails></PriveteRoute>
             }
 
+        ]
+    },
+
+    {
+        path: '/blog',
+        element: <BlogLayout />,
+        children: [
+                {
+                    path: '/blog',
+                    element: <BlogPage />,
+                    loader: () => fetch('https://green-tech-it-server.vercel.app/blogs')
+                },
+    
+                {
+                    path: '/blog/:id',
+                    element: <BlogDetails />,
+                    loader: ({ params }) => fetch(`https://green-tech-it-server.vercel.app/blogs/${params.id}`)
+                },
         ]
     },
 

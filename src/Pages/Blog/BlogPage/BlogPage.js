@@ -1,36 +1,43 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
-const BlogPage = ({ blogs }) => {
+const BlogPage = () => {
+    const { blogs } = useContext(AuthContext)
+    console.log('blogs', blogs)
     return (
-        <div className='mx-5 grid md:grid-cols-2 gap-10 md:mx-auto '>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-8">
             {
-                blogs.map(blg => <div key={blg.id} className="shadow-slate-400 shadow-2xl  overflow-hidden bg-white rounded">
-                    <div className="p-5">
-                        <div className="relative">
-                            <Link to={`/blog/${blg._id}`} className="block aspect-w-4 aspect-h-3">
-                                <img className="object-cover w-full h-80" src={blg?.photo} alt="" />
-                            </Link>
-
-                            <div className="absolute top-4 left-4">
-                                <span className="px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-rose-600 rounded-full"> {blg?.category} </span>
+                blogs.map(blog => (
+                    <div  key={blog._id} className=''>
+                    <div className="h-[250px] overflow-hidden rounded-md">
+                        <img className="h-full w-full rounded-md hover:scale-110 transition duration-500 ease-in-out" src={blog.photo} alt="" />
+                    </div>
+                   <div className="mt-5">
+                        <div className="flex justify-between items-center">
+                            <div className="flex gap-2 items-center">
+                                <i className="pi pi-calendar text-sm sm:text-base"></i>
+                                <p className="hover:text-primary text-sm sm:text-base hover:underline transition duration-500 ease-in-out cursor-pointer">{blog.date}</p>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <i className="pi pi-user text-sm sm:text-base"></i>
+                                <p className="hover:text-primary text-sm sm:text-base hover:underline transition duration-500 ease-in-out cursor-pointer">{ blog.author }</p>
                             </div>
                         </div>
-                        <span className="block mt-6 text-sm font-semibold tracking-widest text-gray-500 uppercase"> {blg?.date} </span>
-                        <p className="mt-5 text-2xl font-semibold">
-                            <Link to={`/blog/${blg._id}`} className="text-black">{blg?.name} </Link>
-                        </p>
-                        <p className="mt-4 text-base text-gray-600">{blg?.description.slice(0, 250)}</p>
-                        <Link to={`/blog/${blg._id}`} className="inline-flex items-center justify-center pb-0.5 mt-5 text-base font-semibold text-blue-600 transition-all duration-200 border-b-2 border-transparent hover:border-blue-600 focus:border-blue-600">
-                            Continue Reading
-                            <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                            </svg>
-                        </Link>
-                    </div>
-                </div>)
-            }
-        </div>
+         
+                        <div>
+                            <Link to={`/blog/${blog._id}`}>
+                                <h1 className="md:text-h2 text-xl font-semibold my-5 hover:text-primary  transition duration-500 ease-in-out">{ blog.name.slice(0,50) }</h1>
+                            </Link>
+                            <div className="py-5">
+                             <Link className="sm:px-10 px-6 sm:py-4 py-2.5 rounded-sm bg-secondary hover:bg-primary transition duration-500 ease-in-out text-white" to={`/blog/${blog._id}`}>Read More</Link>
+                            </div>
+                        </div>
+                   </div>
+                 </div>
+                ))
+       }
+       </div>
     );
 };
 

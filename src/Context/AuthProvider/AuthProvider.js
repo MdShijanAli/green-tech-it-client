@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, GoogleAuthProvider, sendEmailVerification } from "firebase/auth";
 import app from '../../firebase/firebase.config';
+import axios from 'axios';
 
 export const AuthContext = createContext();
 
@@ -75,6 +76,18 @@ const AuthProvider = ({ children }) => {
 
     }, [])
 
+    const [blogs,setBlogs] = useState([])
+
+    useEffect(() => {
+        axios.get('https://green-tech-it-server.vercel.app/blogs')
+            .then(res => {
+                setBlogs(res.data)
+            })
+            .catch(err => {
+            console.log(err.message)
+        })
+    },[])
+
 
     const authInfo = {
         createUser,
@@ -86,7 +99,8 @@ const AuthProvider = ({ children }) => {
         loading,
         setLoading,
         passResetEmail,
-        verifyEmail
+        verifyEmail,
+        blogs
 
 
     }
