@@ -18,7 +18,6 @@ import Home from "../Pages/Home/Home/Home";
 import AllProducts from "../Pages/Products/AllProducts/AllProducts";
 import CategoryProductsPage from "../Pages/Products/CategoryProductspage/CategoryProductsPage";
 import ProductDetails from "../Pages/Products/ProductDetails/ProductDetails";
-import Products from "../Pages/Products/Products";
 import PriveteRoute from "./PrivateRoute/PriveteRoute";
 
 
@@ -58,14 +57,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact></Contact>
-            }
-
-        ]
-    },
-    {
-        path: '/products',
-        element: <Products></Products>,
-        children: [
+            },
             {
                 path: '/products',
                 element: <AllProducts></AllProducts>,
@@ -82,8 +74,10 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://green-tech-it-server.vercel.app/product/${params.id}`),
                 element: <PriveteRoute><ProductDetails></ProductDetails></PriveteRoute>
             }
+
         ]
     },
+
     {
         path: '/dashboard',
         element: <PriveteRoute><DashboardLayout></DashboardLayout></PriveteRoute>,
