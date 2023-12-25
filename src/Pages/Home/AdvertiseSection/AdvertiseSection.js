@@ -39,22 +39,17 @@ const AdvertiseSection = () => {
                             >
                             <p class="text-white uppercase">{ adv.product?.category }</p>
                             </div>
-                        <div className="">
-                            <h2 className="text-h4 font-semibold my-5">{adv.product?.name}</h2>
-                          
-                             
-                        <div className='mb-5 sm:flex sm:items-center sm:justify-between'>
-                                <div>
-                                <h2 className='text-h5 font-semibold'>Condition: <span className='font-semibold italic text-blue-900'>{adv.product?.condition}</span></h2>
-                             <h2 className='text-h5 font-semibold'>Price: <span className='font-semibold italic text-blue-900'>{adv.product.resalePrice} BDT</span></h2>
-                        </div>
-                                <div className='mt-5 sm:mt-0'>
-                                <Link to={`/products/sp/${adv.product._id}`} className='px-6 py-2  bg-secondary rounded-sm text-white  font-semibold hover:bg-primary  transition duration-500 ease-in-out'>
-                             Details
-                        </Link>
-                       </div>
-                     </div>
-                        </div>
+                            <div className="">
+            <Link to={`/products/sp/${adv.product._id}`}>
+                <h2 className="sm:text-h4 text-md hover:text-primary transition duration-500 ease-out font-semibold my-5">{adv.product?.name.slice(0,40)}...</h2>
+            </Link>
+    
+
+                <div>
+                <h2 className='sm:text-h5 text-xs font-semibold'>Condition: <span className='font-semibold italic text-secondary'>{adv.product?.condition}</span></h2>
+            <h2 className='sm:text-h5 text-xs font-semibold mt-2'>Price: <span className='font-semibold italic text-secondary'>{adv.product.resalePrice} BDT</span></h2>
+        </div>
+    </div>
                     </div>)
                 }
 
