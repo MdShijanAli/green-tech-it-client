@@ -6,28 +6,34 @@ const CategoryProductsPage = () => {
 
     console.log(singleCategoryProducts);
     return (
-        <div>
-            <div className="flex-1 text-center lg:text-left">
-                <h2 className="text-3xl font-bold leading-tight text-center text-black sm:text-4xl lg:text-4xl mt-10">{singleCategoryProducts[0].category} Laptops</h2>
-            </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-10 m-5 md:m-20'>
+        <div className='max-w-7xl mx-auto px-6 py-20'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+
+
                 {
-                    singleCategoryProducts.map(product => <div key={product._id} className="card w-full shadow-xl">
-                        <figure><img className='w-full h-96' src={product.photo} alt="Products" /></figure>
-                        <div className="card-body">
-                            <h2 className="card-title">{product.name}</h2>
-                            <h2 className='text-xl mt-10'>Seller Name: <span className='font-semibold italic text-blue-900'>{product.salerName}</span></h2>
-                            <h2 className='text-xl'>Condition: <span className='font-semibold italic text-blue-900'>{product?.condition}</span></h2>
-                            <h2 className='text-xl'>Brand: <span className='font-semibold italic text-blue-900'>{product?.category}</span></h2>
-                            <h2 className='text-xl'>Sale Price: <span className='font-semibold italic text-blue-900'>{product.resalePrice} BDT</span></h2>
+                    singleCategoryProducts.map(product => <div key={product._id} className="w-full relative">
+                        <div className=' relative w-full sm:h-[320px] h-[250px] p-10 flex items-center justify-center border overflow-hidden'>
+                            <img className='w-full h-full bg-contain hover:scale-110 transition duration-700 ease-in-out' src={product.photo} alt="Products" />
+                        </div>
+                        <div
+                            class="absolute top-5 left-5 bg-secondary px-2 rounded-sm"
+                        >
+                            <p class="text-white uppercase">{product?.category}</p>
+                        </div>
+                        <div className="">
                             <Link to={`/products/sp/${product._id}`}>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">See Details</button>
-                                </div>
+                                <h2 className="sm:text-h4 text-md hover:text-primary transition duration-500 ease-out font-semibold my-5">{product?.name.slice(0, 40)}...</h2>
                             </Link>
+
+
+                            <div>
+                                <h2 className='sm:text-h5 text-xs font-semibold'>Condition: <span className='font-semibold italic text-secondary'>{product?.condition}</span></h2>
+                                <h2 className='sm:text-h5 text-xs font-semibold mt-2'>Price: <span className='font-semibold italic text-secondary'>{product.resalePrice} BDT</span></h2>
+                            </div>
                         </div>
                     </div>)
                 }
+
             </div>
         </div>
     );
