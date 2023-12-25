@@ -17,7 +17,7 @@ const BlogSection = () => {
 
     console.log(blogss);
     return (
-        <div>
+        <div className='bg-background'>
             <div className='max-w-7xl mx-auto px-6 py-10'>
                 <Heading>Latest Blogs</Heading>
             <div className='md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 py-10'>

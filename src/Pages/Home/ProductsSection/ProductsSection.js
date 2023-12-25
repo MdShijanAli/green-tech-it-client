@@ -21,13 +21,14 @@ const ProductsSection = () => {
 
   
     return (
-        <div className='max-w-7xl mx-auto px-6 py-14'>
+        <div>
+             <div className='max-w-7xl mx-auto px-6 py-14'>
        <Heading>All Products</Heading>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-16'>
 
                 {
                     products.slice(0, 3).map(product => <div key={product._id} className="w-full relative">
-                    <div className=' relative w-full sm:h-[320px] h-[250px] p-10 flex items-center justify-center border overflow-hidden'>
+                    <div className='relative w-full sm:h-[320px] h-[250px] p-10 flex items-center justify-center border overflow-hidden'>
                       <img className='w-full h-full bg-contain hover:scale-110 transition duration-700 ease-in-out' src={product.photo} alt="Products" />
                     </div>
                     <div
@@ -62,6 +63,7 @@ const ProductsSection = () => {
                     </div>
 
         </div>
+       </div>
     );
 };
 

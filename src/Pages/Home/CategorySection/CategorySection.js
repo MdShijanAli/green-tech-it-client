@@ -27,7 +27,7 @@ const CategorySection = () => {
 
                             <div>
                             <h2 className="text-h1 text-white uppercase text-center">{category.name}</h2>
-                            <div className="text-centera mt-4">
+                            <div className="text-center mt-4">
                                 <Link to={`/products/${category.name}`}>
                                    <Button>See All</Button>
                                 </Link>

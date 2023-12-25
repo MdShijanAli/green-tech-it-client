@@ -2,8 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Heading from '../../../components/Heading';
-import Button from '../../../components/Button';
-
 const AdvertiseSection = () => {
 
     const { data: advertise = [] } = useQuery({
@@ -20,14 +18,20 @@ const AdvertiseSection = () => {
         }
     })
 
+
+
+
     return (
+        <div className='bg-background'>
+
+      
         <div className='max-w-7xl mx-auto px-6 py-14'>
           <Heading>Advertisement Products</Heading>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-16'>
 
                 {
                     advertise.slice(0,3).map(adv => <div key={adv._id} className="w-full relative">
-                        <div className=' relative w-full sm:h-[320px] h-[250px] p-10 flex items-center justify-center border overflow-hidden'>
+                        <div className='bg-white relative w-full sm:h-[320px] h-[250px] p-10 flex items-center justify-center border overflow-hidden'>
                           <img className='w-full h-full hover:scale-110 transition duration-700 ease-in-out' src={adv.product.photo} alt="Products" />
                         </div>
                         <div
@@ -55,7 +59,9 @@ const AdvertiseSection = () => {
                 }
 
             </div>
-        </div>
+       
+            </div>
+            </div>
     );
 };
 

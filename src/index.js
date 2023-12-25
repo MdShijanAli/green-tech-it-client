@@ -4,7 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
-
+import { PrimeReactProvider } from 'primereact/api';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';   
+import 'primeicons/primeicons.css';
+import 'primereact/resources/primereact.css'; 
 
 
 import {
@@ -19,7 +22,9 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
+        <PrimeReactProvider>
         <App />
+      </PrimeReactProvider>
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode >

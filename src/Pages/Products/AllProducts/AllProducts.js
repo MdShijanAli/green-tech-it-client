@@ -73,7 +73,7 @@ const AllProducts = () => {
 </div>
 
             <div>
-                <div className='max-w-7xl px-6 mx-auto py-10'>
+                <div className='max-w-7xl px-6 mx-auto pt-10'>
                     <ul className='flex items-center gap-1'>
                         {
                             tabItems.map(tab => (
