@@ -30,7 +30,7 @@ const BlogPage = () => {
                                 <h1 className="md:text-h2 text-xl font-semibold my-5 hover:text-primary  transition duration-500 ease-in-out">{ blog.name.slice(0,50) }</h1>
                             </Link>
                             <div className="py-5">
-                             <Link className="sm:px-10 px-6 sm:py-4 py-2.5 rounded-sm bg-secondary hover:bg-primary transition duration-500 ease-in-out text-white" to={`/blog/${blog._id}`}>Read More</Link>
+                             <Link className="sm:px-6 px-5 sm:py-3 py-2.5 rounded-sm bg-secondary hover:bg-primary transition duration-500 ease-in-out text-white" to={`/blog/${blog._id}`}>Read More</Link>
                             </div>
                         </div>
                    </div>

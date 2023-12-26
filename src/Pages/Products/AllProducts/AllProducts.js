@@ -42,11 +42,11 @@ const AllProducts = () => {
 
 <div>
     <div class="max-w-7xl mx-auto px-6 pt-20">
-            <div class="grid sm:grid-cols-3 border py-4 px-5 items-center justify-between">
-                 <div>
+            <div class="grid sm:grid-cols-3 border py-4 px-5 gap-5 items-center justify-between">
+                 <div className='text-center md:text-left'>
                     <p>Total Products: <span class="text-primary">{selectedProducts.length }</span></p>
                  </div>
-                 <div class="flex gap-5 items-center justify-center">
+                 <div class="flex gap-5 items-center justify-center md:justify-center">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 448 512">
                             <path d="M128 136c0-22.1-17.9-40-40-40L40 96C17.9 96 0 113.9 0 136l0 48c0 22.1 17.9 40 40 40H88c22.1 0 40-17.9 40-40l0-48zm0 192c0-22.1-17.9-40-40-40H40c-22.1 0-40 17.9-40 40l0 48c0 22.1 17.9 40 40 40H88c22.1 0 40-17.9 40-40V328zm32-192v48c0 22.1 17.9 40 40 40h48c22.1 0 40-17.9 40-40V136c0-22.1-17.9-40-40-40l-48 0c-22.1 0-40 17.9-40 40zM288 328c0-22.1-17.9-40-40-40H200c-22.1 0-40 17.9-40 40l0 48c0 22.1 17.9 40 40 40h48c22.1 0 40-17.9 40-40V328zm32-192v48c0 22.1 17.9 40 40 40h48c22.1 0 40-17.9 40-40V136c0-22.1-17.9-40-40-40l-48 0c-22.1 0-40 17.9-40 40zM448 328c0-22.1-17.9-40-40-40H360c-22.1 0-40 17.9-40 40v48c0 22.1 17.9 40 40 40h48c22.1 0 40-17.9 40-40V328z"/>
@@ -58,7 +58,7 @@ const AllProducts = () => {
                         </svg>
                     </div>
                  </div>
-                 <div class="flex justify-end gap-2 items-center">
+                 <div class="flex justify-center md:justify-end gap-2 items-center">
                     <p class="">Sort By:</p>
                     <select name="" id="" class="border-none focus:ring-primary">
                         <option value="Default">Default</option>
@@ -74,10 +74,10 @@ const AllProducts = () => {
 
             <div>
                 <div className='max-w-7xl px-6 mx-auto pt-10'>
-                    <ul className='flex items-center gap-1'>
+                    <ul className='flex flex-wrap items-center gap-1'>
                         {
                             tabItems.map(tab => (
-                                <li onClick={()=>handleSelect(tab.label)} className={`${select===tab.label? 'bg-secondary': 'bg-primary'}  text-white px-4 py-2 cursor-pointer`}>{ tab.label}</li>
+                                <li onClick={()=>handleSelect(tab.label)} className={`${select===tab.label? 'bg-secondary': 'bg-primary'}  text-white sm:px-4 px-3 py-2 cursor-pointer`}>{ tab.label}</li>
                             ))
                         }
                      </ul>
