@@ -100,15 +100,15 @@ const Products = () => {
               <div className='flex justify-evenly mt-10'>
   
                 <Link onClick={() => handleDelete(product)}>
-                    <button className="px-3 py-1 text-white bg-red-700">Delete</button>
+                    <button className="md:px-3 px-2 lg:px-2 xl:px-3 text-sm md:text-base lg:text-sm xl:text-base py-1 text-white bg-red-700">Delete</button>
   
                 </Link>
                 <Link onClick={() => handleAdvertise(product)}>
-                    <button className="px-3 py-1 text-white bg-green-800">Advertise</button>
+                    <button className="md:px-3 px-2 lg:px-2 xl:px-3 text-sm md:text-base lg:text-sm xl:text-base py-1 text-white bg-green-800">Advertise</button>
                 </Link>
                 <Link to={`/products/sp/${product._id}`}>
                     <div className="card-actions">
-                        <button className="px-3 py-1 text-white bg-black">See Details</button>
+                        <button className="md:px-3 px-2 lg:px-2 xl:px-3 text-sm md:text-base lg:text-sm xl:text-base py-1 text-white bg-black">See Details</button>
                     </div>
                 </Link>
                 </div>

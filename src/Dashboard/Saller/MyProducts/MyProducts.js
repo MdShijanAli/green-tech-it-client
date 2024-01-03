@@ -181,7 +181,7 @@ const MyProducts = () => {
                     </div>
                         
                         :
-                          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'> 
+                          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8'> 
 
                             {
                                 myProducts.map(product => <div key={product._id} className="w-full relative ">
@@ -224,25 +224,7 @@ const MyProducts = () => {
 
             <div className='fixed right-0 bottom-0'>
             <Button onClick={() => setVisible(true)} >
-                                  <svg xmlns="http://www.w3.org/2000/svg" className='mx-auto' width="100" height="100" viewBox="0 0 93 93" fill="none">
-                                              <g filter="url(#filter0_d_46_1632)">
-                                                <circle cx="46.3791" cy="46.7595" r="31.1035" fill="#00b22d"/>
-                                              </g>
-                                                <path d="M46.3792 35.9758V57.5428" stroke="white" strokeWidth="3.2176" strokeLinecap="round" strokeLinejoin="round"/>
-                                                <path d="M35.5957 46.7593H57.1627" stroke="white" strokeWidth="3.2176" strokeLinecap="round" strokeLinejoin="round"/>
-                                                <defs>
-                                                  <filter id="filter0_d_46_1632" x="0.275635" y="0.656006" width="92.2069" height="92.207" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                                    <feOffset/>
-                                                    <feGaussianBlur stdDeviation="7.5"/>
-                                                    <feComposite in2="hardAlpha" operator="out"/>
-                                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.56087 0 0 0 0 1 0 0 0 0.4 0"/>
-                                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_46_1632"/>
-                                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_46_1632" result="shape"/>
-                                                  </filter>
-                                                </defs>
-                                      </svg>
+                                  <p className='bg-[#00b22d] w-10 sm:w-14 lg:w-16 h-10 sm:h-14 lg:h-16 flex items-center justify-center rounded-full'><i className='pi pi-plus text-xl text-white font-semibold'></i></p>
                                       </Button>
             </div>
 
@@ -250,15 +232,15 @@ const MyProducts = () => {
 
             
             
-            <Dialog header=" Add Your Product" visible={visible} style={{ width: '50vw' }} onHide={() => setVisible(false)}>
+            <Dialog header=" Add Your Product" visible={visible} className='w-full md:w-3/4 xl:w-1/2 px-6 md:px-0' onHide={() => setVisible(false)}>
               <form onSubmit={handleSubmit} className="">
 
-<div className="">
+<div className="w-full">
 
 
 
 
-    <div className=" w-full">
+    <div className="w-full">
         <label htmlFor="name" className="text-sm font-medium leading-none text-gray-800">
             {" "}
             Product Name{" "}

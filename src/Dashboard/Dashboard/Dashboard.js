@@ -22,7 +22,7 @@ const {loading,products,users} = useContext(AuthContext)
     return (
         <div>
             
-<div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
+<div className="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
     <div className="col-span-1 bg-white rounded-lg">
         <div className="shadow-xl p-3 border rounded-lg">
             <div className="flex justify-between mb-3">

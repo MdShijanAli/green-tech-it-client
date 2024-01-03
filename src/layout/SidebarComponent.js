@@ -1,5 +1,5 @@
 import React, { useContext }  from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 
@@ -24,7 +24,7 @@ const Sidebar = () => {
 }
 
   return (
-      <div className='sticky top-5 p-10  bg-white h-[95vh]'>
+      <div className='sticky top-5 p-10 relative bg-white h-[95vh] '>
           <h2>{ user.email}</h2>
           <ul class="list-none p-0 m-0 overflow-hidden">
               
@@ -82,8 +82,19 @@ const Sidebar = () => {
                                  </button>
                              </li>
                     
-                             </ul>
-    </div>
+          </ul>
+          
+              <Link to='/' className='text-white'>
+              <div className='absolute bottom-0 left-0 bg-black w-full p-5 text-center flex items-center gap-5 justify-center'> 
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+            </svg>
+             <span>Home</span>
+                </div>
+             </Link>
+      </div>
+      
+      
   );
 };
 

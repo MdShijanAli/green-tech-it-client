@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../images/logo.png';
-import { UserCircleIcon } from '@heroicons/react/24/solid'
-import toast from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import './Header.css'
 import { Sidebar } from 'primereact/sidebar';
@@ -10,22 +8,7 @@ import { Button } from 'primereact/button';
 
 const Header = () => {
     const [visible, setVisible] = useState(false);
-    const navigate = useNavigate();
-    const [navbar, setNavbar] = useState(false);
-    const { user, logOut } = useContext(AuthContext);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    // console.log('header user', user)
-    const handleLogout = () => {
-        logOut()
-            .then(() => {
-                console.log('successfuly logout');
-                toast.success('You have logged Out Successfully!!')
-                navigate('/')
-            })
-            .catch(error => {
-                console.error('error', error.message)
-            })
-    }
+    const { user } = useContext(AuthContext);
 
 
     
