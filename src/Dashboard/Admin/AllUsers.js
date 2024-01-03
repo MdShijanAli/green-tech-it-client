@@ -5,7 +5,7 @@ import Loading from '../../components/Loading/Loading';
 import useTitle from '../../hoocks/useTitle';
 // import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
-const AllSellers = () => {
+const AllUsers = () => {
    
 
     useTitle('All Sallers')
@@ -15,8 +15,7 @@ const AllSellers = () => {
             try {
                 const res = await fetch('https://green-tech-it-server.vercel.app/users');
                 const data = await res.json();
-                const showSallers = data.filter(saller => saller.role === "Saller")
-                return showSallers;
+                return data;
             }
             catch (error) {
                 console.log(error);
@@ -44,7 +43,7 @@ const AllSellers = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast.success('Product Deleted Successfully')
+                    toast.success('User Deleted Successfully')
                     refetch();
                 }
             })
@@ -54,11 +53,10 @@ const AllSellers = () => {
 
     return (
         <div>
-            <h2 className='text-3xl text-center font-semibold  mt-10'>All Sellers</h2>
 
             {
-                sallers.length === 0 ? <h2 className='text-3xl font-semibold mt-10 text-center'>Here has not any Saller</h2> :
-                    <div className="overflow-x-auto w-5/6 mx-auto my-10">
+                sallers.length === 0 ? <h2 className='text-3xl font-semibold text-center'>Here has not any Saller</h2> :
+                    <div className="overflow-x-auto">
                         <table className="table w-full">
 
                             <thead>
@@ -110,4 +108,4 @@ const AllSellers = () => {
     );
 };
 
-export default AllSellers;
+export default AllUsers;

@@ -78,7 +78,7 @@ const BookingModal = ({ productDetails }) => {
                     <h3 className="text-lg font-bold mt-5 mb-10">{name}</h3>
                     <form onSubmit={handleBooking}>
 
-                        <input name='buyerName' type="text" defaultValue={user?.displayName} disabled className="input input-bordered input-secondary w-full my-1" required />
+                        <input name='buyerName' type="text" defaultValue={user?.displayName}  disabled={user?.displayName ? true : false} className="input input-bordered input-secondary w-full my-1" placeholder='Enter Your Name' required />
                         <input name='email' type="email" defaultValue={user?.email} disabled className="input input-bordered input-secondary w-full my-1" required />
                         <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered input-primary w-full my-1" required />
                         <input name='location' type="text" placeholder="Meeting Location" className="input input-bordered input-primary w-full my-1" required />

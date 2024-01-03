@@ -9,3 +9,14 @@ body,h1,h2,h3,h4,h5,h6,p,span,a{
   font-family: 'Poppins', sans-serif;
 }
 
+.p-grid.grid.p-nogutter.grid-nogutter {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 31px;
+}
+
+.p-paginator-bottom.p-paginator.p-component {
+  border: 1px solid #ddd;
+  margin-top: 40px;
+}
+

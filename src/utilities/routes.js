@@ -20,6 +20,8 @@ import PriveteRoute from "./PrivateRoute/PriveteRoute";
 import BlogLayout from "../layout/BlogLayout";
 import BlogPage from "../Pages/Blog/BlogPage/BlogPage";
 import BlogDetails from "../Pages/Blog/BlogPage/BlogDetails";
+import AllUsers from "../Dashboard/Admin/AllUsers";
+import Products from "../Dashboard/Admin/Products";
 
 
 export const routes = createBrowserRouter([
@@ -96,8 +98,17 @@ export const routes = createBrowserRouter([
 
             },
             {
+                path: '/dashboard/products',
+                element: <PriveteRoute><Products /></PriveteRoute>
+
+            },
+            {
                 path: '/dashboard/all-sellers',
                 element: <PriveteRoute><AllSellers></AllSellers></PriveteRoute>
+            },
+            {
+                path: '/dashboard/all-users',
+                element: <PriveteRoute><AllUsers /></PriveteRoute>
             },
             {
                 path: '/dashboard/all-buyers',
@@ -109,7 +120,8 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/my-products',
-                element: <PriveteRoute><MyProducts></MyProducts></PriveteRoute>
+                element: <PriveteRoute><MyProducts></MyProducts></PriveteRoute>,
+                loader: () => fetch('https://green-tech-it-server.vercel.app/categories')
             },
             {
                 path: '/dashboard/add-a-product',

@@ -27,10 +27,9 @@ const MyOrders = () => {
 
     return (
         <div>
-            <h2 className='text-3xl text-center font-semibold mt-10'>My Orders</h2>
 
             {myOrders.length === 0 ? <h2 className='text-3xl font-semibold mt-10 text-center'>You Have not any Orders</h2> :
-                <div className="overflow-x-auto w-full my-10">
+                <div className="overflow-x-auto">
                     <table className="table w-full">
 
                         <thead>

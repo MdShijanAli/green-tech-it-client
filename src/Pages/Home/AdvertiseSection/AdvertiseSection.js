@@ -9,6 +9,7 @@ const AdvertiseSection = () => {
         queryFn: async () => {
             try {
                 const res = await fetch('https://green-tech-it-server.vercel.app/advertise');
+                console.log(res)
                 const data = await res.json();
                 return data;
             }

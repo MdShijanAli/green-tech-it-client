@@ -1,6 +1,6 @@
 // import { useQuery } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext} from 'react';
 import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../../hoocks/useTitle';
@@ -33,13 +33,12 @@ const MyBuyers = () => {
 
     return (
         <div>
-            <h2 className='text-3xl text-center font-semibold  mt-10'>My Buyers</h2>
 
             {
                 myBuyers.length === 0 ? <h2 className='text-3xl font-semibold mt-10 text-center'>You Have not any Buyers</h2> :
 
 
-                    <div className="overflow-x-auto w-5/6 mx-auto my-10">
+                    <div className="overflow-x-auto">
                         <table className="table w-full">
 
                             <thead>

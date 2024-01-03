@@ -28,54 +28,6 @@ const Header = () => {
     }
 
 
-   /*  const userDash = <React.Fragment>
-        {
-            isDropdownOpen && <div>
-                {
-                    user?.uid && <div className="md:absolute md:right-16 z-20 mt-5 md:mt-0 w-full md:w-48 py-2 bg-white rounded-md shadow-xl ">
-
-                        <ul className="py-1" aria-labelledby="user-menu-button">
-                            <li>
-                                <Link to='/dashboard' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</Link>
-                            </li>
-
-
-                            <li>
-                                <Link onClick={() => {
-                                    setIsDropdownOpen(false)
-                                    handleLogout()
-                                }}
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
-                            </li>
-                        </ul>
-                    </div>
-                }
-            </div>
-        }
-    </React.Fragment> */
-
-
-/*     const menuItems = <React.Fragment>
-        <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-            <li className="text-white hover:text-indigo-200">
-                <NavLink to='/'>Home</NavLink>
-            </li>
-            <li className="text-white hover:text-indigo-200">
-                <NavLink to='/products'>Products</NavLink>
-            </li>
-            <li className="text-white hover:text-indigo-200">
-                <NavLink to='/blog'>Blog</NavLink>
-            </li>
-
-            <li className="text-white hover:text-indigo-200">
-                <NavLink to='/contact'>Contact</NavLink>
-            </li>
-
-
-        </ul>
-    </React.Fragment> */
-
-
     
     const customHeader = (
         <React.Fragment>
