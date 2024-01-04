@@ -71,7 +71,7 @@ const MyProducts = () => {
                     console.log(product)
                     // save doctor information to the database
 
-                    fetch('https://green-tech-it-server.vercel.app/add-a-product', {
+                    fetch(`${process.env.REACT_APP_apiUrl}/add-a-product`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -108,7 +108,7 @@ const MyProducts = () => {
         queryKey: ['myProducts'],
         queryFn: async () => {
             try {
-                const res = await fetch(`https://green-tech-it-server.vercel.app/my-products/${user?.email}`);
+                const res = await fetch(`${process.env.REACT_APP_apiUrl}/my-products/${user?.email}`);
                 const data = await res.json();
                 return data;
             }
@@ -129,7 +129,7 @@ const MyProducts = () => {
     // delete product
 
     const handleDelete = product => {
-        fetch(`https://green-tech-it-server.vercel.app/my-products/${product._id}`, {
+        fetch(`${process.env.REACT_APP_apiUrl}/my-products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -155,7 +155,7 @@ const MyProducts = () => {
 
         }
 
-        fetch('https://green-tech-it-server.vercel.app/advertise', {
+        fetch(`${process.env.REACT_APP_apiUrl}/advertise`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

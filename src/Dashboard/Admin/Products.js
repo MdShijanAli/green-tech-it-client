@@ -16,7 +16,7 @@ const Products = () => {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    axios.get('https://green-tech-it-server.vercel.app/products')
+    axios.get(`${process.env.REACT_APP_apiUrl}/products`)
       .then(response => {
       setProducts(response.data)
       })
@@ -37,7 +37,7 @@ const Products = () => {
     // delete product
 
     const handleDelete = product => {
-        fetch(`https://green-tech-it-server.vercel.app/my-products/${product._id}`, {
+        fetch(`${process.env.REACT_APP_apiUrl}/my-products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -61,7 +61,7 @@ const Products = () => {
 
         }
 
-        fetch('https://green-tech-it-server.vercel.app/advertise', {
+        fetch(`${process.env.REACT_APP_apiUrl}/advertise`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

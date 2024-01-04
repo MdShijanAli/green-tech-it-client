@@ -46,7 +46,7 @@ const BookingModal = ({ productDetails }) => {
 
 
 
-        fetch('https://green-tech-it-server.vercel.app/bookings', {
+        fetch(`${process.env.REACT_APP_apiUrl}/bookings`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

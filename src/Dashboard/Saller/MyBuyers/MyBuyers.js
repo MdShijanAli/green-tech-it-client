@@ -15,7 +15,7 @@ const MyBuyers = () => {
         queryKey: ['myBuyers'],
         queryFn: async () => {
             try {
-                const res = await fetch('https://green-tech-it-server.vercel.app/bookings');
+                const res = await fetch(`${process.env.REACT_APP_apiUrl}/bookings`);
                 const data = await res.json();
                 const myBuyer = data.filter(myb => myb.salerEmail === user?.email);
                 return myBuyer;

@@ -13,7 +13,7 @@ const AllSellers = () => {
         queryKey: ['sallers'],
         queryFn: async () => {
             try {
-                const res = await fetch('https://green-tech-it-server.vercel.app/users');
+                const res = await fetch(`${process.env.REACT_APP_apiUrl}/users`);
                 const data = await res.json();
                 const showSallers = data.filter(saller => saller.role === "Saller")
                 return showSallers;
@@ -35,7 +35,7 @@ const AllSellers = () => {
     const handleDelete = user => {
 
 
-        fetch(`https://green-tech-it-server.vercel.app/user/${user._id}`, {
+        fetch(`${process.env.REACT_APP_apiUrl}/user/${user._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

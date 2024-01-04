@@ -2,6 +2,7 @@ import React, { useContext }  from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Sidebar = () => {
   const { user, users, logOut } = useContext(AuthContext);
@@ -24,8 +25,24 @@ const Sidebar = () => {
 }
 
   return (
-      <div className='sticky top-5 p-10 relative bg-white h-[95vh] '>
-          <h2>{ user.email}</h2>
+      <div className='sticky top-5 relative bg-white h-[95vh] '>
+
+          <div className=' w-full'> 
+              <div className='w-full h-40'>
+                  {
+                      user?.photoURL ? <img className='w-full h-full' src={user?.photoURL} alt="" /> : <FaUserCircle className='w-full h-full p-6 bg-gray-200'/>
+                  }
+                  
+              </div>
+              <div className='text-center p-3 bg-gray-100'>
+              <h2 className='text-xl'>{user?.displayName}</h2>
+              <p className='text-sm'>{ user?.email}</p>
+              </div>
+                </div> 
+
+          <div className='p-10'>
+                
+         
           <ul class="list-none p-0 m-0 overflow-hidden">
               
                              <li className='p-3'>
@@ -83,6 +100,7 @@ const Sidebar = () => {
                              </li>
                     
           </ul>
+        </div>
           
               <Link to='/' className='text-white'>
               <div className='absolute bottom-0 left-0 bg-black w-full p-5 text-center flex items-center gap-5 justify-center'> 

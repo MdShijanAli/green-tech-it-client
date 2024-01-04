@@ -9,7 +9,7 @@ const ProductsSection = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch('https://green-tech-it-server.vercel.app/products');
+                const res = await fetch(`${process.env.REACT_APP_apiUrl}/products`);
                 const data = await res.json();
                 return data;
             }

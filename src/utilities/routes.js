@@ -53,17 +53,17 @@ export const routes = createBrowserRouter([
             {
                 path: '/products',
                 element: <AllProducts></AllProducts>,
-                loader: () => fetch('https://green-tech-it-server.vercel.app/products')
+                loader: () => fetch(`${process.env.REACT_APP_apiUrl}/products`)
             },
             {
                 path: '/products/:name',
-                loader: ({ params }) => fetch(`https://green-tech-it-server.vercel.app/products/${params.name}`),
+                loader: ({ params }) => fetch(`${process.env.REACT_APP_apiUrl}/products/${params.name}`),
                 element: <CategoryProductsPage></CategoryProductsPage>
             },
 
             {
                 path: '/products/sp/:id',
-                loader: ({ params }) => fetch(`https://green-tech-it-server.vercel.app/product/${params.id}`),
+                loader: ({ params }) => fetch(`${process.env.REACT_APP_apiUrl}/product/${params.id}`),
                 element: <PriveteRoute><ProductDetails></ProductDetails></PriveteRoute>
             }
 
@@ -77,13 +77,13 @@ export const routes = createBrowserRouter([
                 {
                     path: '/blog',
                     element: <BlogPage />,
-                    loader: () => fetch('https://green-tech-it-server.vercel.app/blogs')
+                    loader: () => fetch(`${process.env.REACT_APP_apiUrl}/blogs`)
                 },
     
                 {
                     path: '/blog/:id',
                     element: <BlogDetails />,
-                    loader: ({ params }) => fetch(`https://green-tech-it-server.vercel.app/blogs/${params.id}`)
+                    loader: ({ params }) => fetch(`${process.env.REACT_APP_apiUrl}/blogs/${params.id}`)
                 },
         ]
     },
@@ -121,12 +121,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard/my-products',
                 element: <PriveteRoute><MyProducts></MyProducts></PriveteRoute>,
-                loader: () => fetch('https://green-tech-it-server.vercel.app/categories')
+                loader: () => fetch(`${process.env.REACT_APP_apiUrl}/categories`)
             },
             {
                 path: '/dashboard/add-a-product',
                 element: <PriveteRoute><AddAProduct></AddAProduct></PriveteRoute>,
-                loader: () => fetch('https://green-tech-it-server.vercel.app/categories')
+                loader: () => fetch(`${process.env.REACT_APP_apiUrl}/categories`)
             },
             {
                 path: '/dashboard/my-buyers',

@@ -64,7 +64,7 @@ const AddAProduct = () => {
                     // console.log(userInfo)
                     // save doctor information to the database
 
-                    fetch('https://green-tech-it-server.vercel.app/add-a-product', {
+                    fetch(`${process.env.REACT_APP_apiUrl}/add-a-product`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

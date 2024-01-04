@@ -7,7 +7,7 @@ const BlogSection = () => {
     const [blogss, setBlogss] = useState([]);
 
     useEffect(() => {
-        fetch('https://green-tech-it-server.vercel.app/home-blogs')
+        fetch(`${process.env.REACT_APP_apiUrl}/home-blogs`)
             .then(res => res.json())
             .then(data => setBlogss(data))
             .catch(err => {

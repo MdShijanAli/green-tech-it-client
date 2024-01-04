@@ -8,7 +8,7 @@ const CategorySection = () => {
 
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        axios.get('https://green-tech-it-server.vercel.app/categories')
+        axios.get(`${process.env.REACT_APP_apiUrl}/categories`)
             .then(res => {
             setCategories(res.data)
             })

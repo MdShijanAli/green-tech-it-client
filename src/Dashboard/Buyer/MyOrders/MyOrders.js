@@ -11,7 +11,7 @@ const MyOrders = () => {
         queryKey: ['myOrders'],
         queryFn: async () => {
             try {
-                const res = await fetch(`https://green-tech-it-server.vercel.app/my-orders/${user?.email}`);
+                const res = await fetch(`${process.env.REACT_APP_apiUrl}/my-orders/${user?.email}`);
                 const data = await res.json();
                 return data;
             }

@@ -18,7 +18,7 @@ const ProductDetails = () => {
     const [featureProducts, setFeaturesProducts] = useState([])
 
     useEffect(() => {
-        axios.get('https://green-tech-it-server.vercel.app/products')
+        axios.get(`${process.env.REACT_APP_apiUrl}/products`)
             .then(res => {
            const filterProducts = res.data.filter(product => product.category === category);
            setFeaturesProducts(filterProducts)

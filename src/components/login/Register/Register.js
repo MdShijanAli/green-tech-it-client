@@ -75,7 +75,7 @@ const Register = () => {
                     console.log(userInfo)
                     // save doctor information to the database
 
-                    fetch('https://green-tech-it-server.vercel.app/users', {
+                    fetch(`${process.env.REACT_APP_apiUrl}/users`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

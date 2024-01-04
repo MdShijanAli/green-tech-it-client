@@ -5,17 +5,7 @@ import Loading from '../../components/Loading/Loading';
 import useTitle from '../../hoocks/useTitle';
 
 const AllBuyers = () => {
-    /*     const [buyers, setBuyers] = useState([]);
-        useEffect(() => {
-            fetch('https://green-tech-it-server.vercel.app/users')
-                .then(res => res.json())
-                .then(data => {
-                    const showSallers = data.filter(saler => saler.check === false)
-                    // console.log(showSallers)
-    
-                    setBuyers(showSallers)
-                })
-        }, []) */
+
 
     useTitle('All Buyers')
 
@@ -23,7 +13,7 @@ const AllBuyers = () => {
         queryKey: ['sallers'],
         queryFn: async () => {
             try {
-                const res = await fetch('https://green-tech-it-server.vercel.app/users');
+                const res = await fetch(`${process.env.REACT_APP_apiUrl}/users`);
                 const data = await res.json();
                 const shwoBuyers = data.filter(buyer => buyer.role === "Buyer")
                 return shwoBuyers;
@@ -42,7 +32,7 @@ const AllBuyers = () => {
     const handleDelete = user => {
 
 
-        fetch(`https://green-tech-it-server.vercel.app/user/${user._id}`, {
+        fetch(`${process.env.REACT_APP_apiUrl}/user/${user._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

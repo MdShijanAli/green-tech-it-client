@@ -79,7 +79,7 @@ const AuthProvider = ({ children }) => {
     const [blogs,setBlogs] = useState([])
 
     useEffect(() => {
-        axios.get('https://green-tech-it-server.vercel.app/blogs')
+        axios.get(`${process.env.REACT_APP_apiUrl}/blogs`)
             .then(res => {
                 setBlogs(res.data)
             })
@@ -91,7 +91,7 @@ const AuthProvider = ({ children }) => {
     const [products,setProducts] = useState([])
     
     useEffect(() => {
-        axios.get('https://green-tech-it-server.vercel.app/products')
+        axios.get(`${process.env.REACT_APP_apiUrl}/products`)
             .then(res => {
                 setProducts(res.data)
             })
@@ -103,7 +103,7 @@ const AuthProvider = ({ children }) => {
     const [users,setUsers] = useState([])
     
     useEffect(() => {
-        axios.get('https://green-tech-it-server.vercel.app/users')
+        axios.get(`${process.env.REACT_APP_apiUrl}/users`)
             .then(res => {
                 setUsers(res.data)
             })
