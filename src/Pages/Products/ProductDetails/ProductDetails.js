@@ -2,8 +2,6 @@ import React,{useState,useEffect} from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import useTitle from '../../../hoocks/useTitle';
 import BookingModal from './BookingModal/BookingModal';
-import Button from '../../../components/Button';
-import { useQuery } from '@tanstack/react-query';
 import Heading from '../../../components/Heading';
 import axios from 'axios';
 // import { useQuery } from '@tanstack/react-query';

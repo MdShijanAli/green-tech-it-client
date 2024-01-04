@@ -97,7 +97,7 @@ const Products = () => {
               </Link>
       
   
-              <div className='flex justify-evenly mt-10'>
+              <div className='flex justify-center gap-2 mt-10'>
   
                 <Link onClick={() => handleDelete(product)}>
                     <button className="md:px-3 px-2 lg:px-2 xl:px-3 text-sm md:text-base lg:text-sm xl:text-base py-1 text-white bg-red-700">Delete</button>
@@ -106,11 +106,7 @@ const Products = () => {
                 <Link onClick={() => handleAdvertise(product)}>
                     <button className="md:px-3 px-2 lg:px-2 xl:px-3 text-sm md:text-base lg:text-sm xl:text-base py-1 text-white bg-green-800">Advertise</button>
                 </Link>
-                <Link to={`/products/sp/${product._id}`}>
-                    <div className="card-actions">
-                        <button className="md:px-3 px-2 lg:px-2 xl:px-3 text-sm md:text-base lg:text-sm xl:text-base py-1 text-white bg-black">See Details</button>
-                    </div>
-                </Link>
+          
                 </div>
       </div>
   </div>

@@ -199,7 +199,7 @@ const MyProducts = () => {
                                         </Link>
                                 
                             
-                                        <div className='flex justify-evenly mt-10'>
+                                        <div className='flex justify-center gap-2 mt-10'>
                             
                                           <Link onClick={() => handleDelete(product)}>
                                               <button className="px-3 py-1 text-white bg-red-700">Delete</button>
@@ -208,11 +208,7 @@ const MyProducts = () => {
                                           <Link onClick={() => handleAdvertise(product)}>
                                               <button className="px-3 py-1 text-white bg-green-800">Advertise</button>
                                           </Link>
-                                          <Link to={`/products/sp/${product._id}`}>
-                                              <div className="card-actions">
-                                                  <button className="px-3 py-1 text-white bg-black">See Details</button>
-                                              </div>
-                                          </Link>
+                                  
                                           </div>
                                 </div>
                             </div>)
