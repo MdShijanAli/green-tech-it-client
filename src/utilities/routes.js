@@ -22,6 +22,7 @@ import BlogPage from "../Pages/Blog/BlogPage/BlogPage";
 import BlogDetails from "../Pages/Blog/BlogPage/BlogDetails";
 import AllUsers from "../Dashboard/Admin/AllUsers";
 import Products from "../Dashboard/Admin/Products";
+import PublicRoute from "./PublicRoute";
 
 
 export const routes = createBrowserRouter([
@@ -35,11 +36,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: <Login></Login>
+                element: <PublicRoute><Login></Login></PublicRoute>
             },
             {
                 path: '/register',
-                element: <Register></Register>
+                element: <PublicRoute><Register></Register></PublicRoute>
             },
 
             {

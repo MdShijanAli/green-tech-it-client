@@ -33,8 +33,7 @@ const Login = () => {
                 form.reset();
                 setError('');
                
-                navigate(from, { replace: true });
-                console.log('Login User from form', user)
+                window.location.href = '/dashboard'
             })
             .catch(error => {
                 console.error('SIgn In from From User', error)
@@ -49,7 +48,7 @@ const Login = () => {
                 const user = result.user;
                 
                 console.log('New User From Google', user);
-                navigate(from, { replace: true })
+                window.location.href = '/dashboard'
 
                 const data = {
                     displayName: user.displayName,
@@ -67,6 +66,8 @@ const Login = () => {
                         console.error('Error:', error.message);
                         toast.error('Your Data record failed')
                     });
+                
+                   
             })
             .catch(error => {
                 console.error('Google User SIgn In error', error);

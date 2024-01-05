@@ -106,7 +106,7 @@ const Register = () => {
                                 verifyEmail()
                                     .then(() => {
                                         toast.success('Please Check your email for verification');
-                                        navigate(from, { replace: true })
+                                        window.location.href = '/dashboard'
 
                                     })
                             )
@@ -139,7 +139,7 @@ const Register = () => {
                 const user = result.user;
                 
                 console.log('New User From Google', user);
-                navigate(from, { replace: true })
+                
                 const data = {
                     displayName: user.displayName,
                     email: user.email,
@@ -156,6 +156,8 @@ const Register = () => {
                         console.error('Error:', error.message);
                         toast.error('Your Data record failed')
                     });
+                
+                    window.location.href = '/dashboard'
          
             })
             .catch(error => {
