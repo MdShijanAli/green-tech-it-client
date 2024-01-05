@@ -1,11 +1,14 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import useTitle from '../../../hoocks/useTitle';
 import BookingModal from './BookingModal/BookingModal';
 import Heading from '../../../components/Heading';
 import axios from 'axios';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 // import { useQuery } from '@tanstack/react-query';
 const ProductDetails = () => {
+    const {user,  users } = useContext(AuthContext)
+    const userRole = users.find(usr => usr.email === user.email)
     const productDetails = useLoaderData();
 
     const { name, photo, location, resalePrice, parchesDate, originalPrice, category, description, condition, used } = productDetails;
@@ -66,12 +69,18 @@ const ProductDetails = () => {
                         <p className="text-justify text-sm sm:text-base tracking-wider leading-7 mt-5">{ description }</p>
                         </div>
                         
-                        <div className="mt-10 text-right">
+                        {
+                            userRole?.role === 'buyer' || userRole?.role === 'admin' ?  <div className="mt-10 text-right">
                             <label htmlFor="booking-modal" className='sm:px-10 px-8 py-2 sm:py-3 bg-primary hover:bg-secondary transition duration-500 ease-in-out text-white font-semibold rounded-sm'>
                                 Book Now
-                         </label>
+                         </label>  </div>: <div className="mt-10 text-right">
+                            <button disabled className='sm:px-10 px-8 py-2 sm:py-3 disabled:cursor-not-allowed disabled:bg-slate-300 bg-primary hover:bg-secondary transition duration-500 ease-in-out text-white font-semibold rounded-sm'>
+                                Book Now
+                         </button>  </div>
+                        }
+                  
 
-                        </div>
+                       
                      <BookingModal productDetails={productDetails}></BookingModal>
         
     

@@ -7,6 +7,7 @@ import useTitle from '../../../hoocks/useTitle';
 import logo from '../../../images/logo.png'
 import img from '../../../images/shijan.jpg'
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import axios from 'axios';
 
 
 const Register = () => {
@@ -31,7 +32,6 @@ const Register = () => {
         const confirm = form.confirm.value;
         const password = form.password.value;
         const image = form.image.files[0];
-        const role = form.role.value;
 
 
 
@@ -54,7 +54,7 @@ const Register = () => {
         const formData = new FormData()
         formData.append('image', image)
 
-        const url = 'https://api.imgbb.com/1/upload?key=c993754e5e7bdf8ca9412defbbd79642'
+        const url = 'https://api.imgbb.com/1/upload?key=27e3c082ffe5757f0d3beb5722d745fe'
         fetch(url, {
             method: 'POST',
             body: formData,
@@ -140,6 +140,23 @@ const Register = () => {
                 
                 console.log('New User From Google', user);
                 navigate(from, { replace: true })
+                const data = {
+                    displayName: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    role: 'buyer'
+                }
+
+                axios.post(`${process.env.REACT_APP_apiUrl}/api/users/`, data)
+                    .then(response => {
+                        console.log('Server response:', response.data);
+                        toast.success('Your Data has recorded')
+                    })
+                    .catch(error => {
+                        console.error('Error:', error.message);
+                        toast.error('Your Data record failed')
+                    });
+         
             })
             .catch(error => {
                 console.error('Google User SIgn In error', error);
@@ -293,8 +310,8 @@ const Register = () => {
                             <select
                              onChange={(e)=>setRolee(e.target.value)} 
                             name='role' id='role' className="select select-success w-full my-2" required>
-                                <option value="Buyer">Buyer</option>
-                                <option value="Saller">Saller</option>
+                                <option value="buyer">Buyer</option>
+                                <option value="saller">Saller</option>
                             </select>
                         </div>
 

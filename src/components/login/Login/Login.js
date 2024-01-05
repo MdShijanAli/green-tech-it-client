@@ -5,6 +5,7 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
 import useTitle from '../../../hoocks/useTitle';
+import axios from 'axios';
 
 
 const Login = () => {
@@ -49,6 +50,23 @@ const Login = () => {
                 
                 console.log('New User From Google', user);
                 navigate(from, { replace: true })
+
+                const data = {
+                    displayName: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    role: 'buyer'
+                }
+
+                axios.post(`${process.env.REACT_APP_apiUrl}/api/users/`, data)
+                    .then(response => {
+                        console.log('Server response:', response.data);
+                        toast.success('Your Data has recorded')
+                    })
+                    .catch(error => {
+                        console.error('Error:', error.message);
+                        toast.error('Your Data record failed')
+                    });
             })
             .catch(error => {
                 console.error('Google User SIgn In error', error);
